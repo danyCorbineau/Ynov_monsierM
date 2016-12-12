@@ -1,34 +1,23 @@
+package Eval;
 
-import java.util.*;
 
-/**
- * 
- */
+
 public class ClePorteSecrete extends Objet {
 
-    /**
-     * Default constructor
-     */
+    private String newRoomName;
+    private String accessType;
+    
     public ClePorteSecrete() {
     }
 
-    /**
-     * 
-     */
-    private String newRoomName;
+    public String getNewRoomName() {return newRoomName;}
 
-    /**
-     * 
-     */
-    void getNewRoomName() {
-        // TODO implement here
-    }
+    public String getAccessType() {return accessType;}
 
-    /**
-     * 
-     */
-    void addNewRoom() {
-        // TODO implement here
+    
+    void addNewRoom(String newRoomName, String accessType) {
+    	Lieu unLieu = new Lieu();
+
     }
 
 }

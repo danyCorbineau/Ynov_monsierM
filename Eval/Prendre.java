@@ -1,46 +1,23 @@
+package Eval;
 
-import java.util.*;
 
-/**
- * 
- */
 public class Prendre extends Objet {
 
-    /**
-     * Default constructor
-     */
-    public Prendre() {
-    }
-
-    /**
-     * 
-     */
-    private String  itemName;
-
-    /**
-     * 
-     */
+    private String description;
     private int itemSize;
 
-    /**
-     * 
-     */
-    void Prendre() {
-        // TODO implement here
+    public Prendre(String description, int itemSize) {
+    	super(description);
+    	this.description = description;
+    	this.itemSize = itemSize;
+    }
+    
+    public Prendre(String itemName) {
+      	this.description = itemName;
     }
 
-    /**
-     * @param itemSize
-     */
-    void Prendre(int itemSize) {
-        // TODO implement here
-    }
+    
 
-    /**
-     * 
-     */
-    void getItemName() {
-        // TODO implement here
-    }
+    public String getItemName() {return description;}
 
 }

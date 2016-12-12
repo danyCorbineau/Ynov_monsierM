@@ -1,27 +1,21 @@
+package Eval;
 
-import java.util.*;
 
-/**
- * 
- */
 public class Information extends Objet {
+	
+	private String description;
 
-    /**
-     * Default constructor
-     */
+	
+	
     public Information() {
+    	if(listeResult.get(2) == "I" || listeResult.get(2) == "O"){
+    		this.description = listeResult.get(3);    		
+    	}
+    	
+    	
     }
 
-    /**
-     * 
-     */
-    private String description;
 
-    /**
-     * 
-     */
-    void getDescription() {
-        // TODO implement here
-    }
+    public String getDescription() {return description;}
 
 }
