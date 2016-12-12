@@ -1,118 +1,79 @@
+package com.ynov.p1;
 
 import java.util.*;
 
-/**
- * 
- */
+
 public class Personnage {
 
-    /**
-     * Default constructor
-     */
-    public Personnage() {
+  
+    public Personnage(String str) {
+    
+    	String[] s2=str.split("; ");
+    	
+    	nom=s2[0];
+    	profession=s2[1];
+    	pointsDeVie=Integer.valueOf(s2[2]);
+    	niveauDeDefense=Integer.valueOf(s2[3]);
+    	niveauAttaque=Integer.valueOf(s2[4]);
+    	capaciteDeTransport=Integer.valueOf(s2[5]);
+    	
     }
 
-    /**
-     * 
-     */
     private String nom;
 
-    /**
-     * 
-     */
     private String profession;
 
-    /**
-     * 
-     */
     private int pointsDeVie;
 
-    /**
-     * 
-     */
     private int niveauDeDefense;
 
-    /**
-     * 
-     */
     private int niveauAttaque;
 
-    /**
-     * 
-     */
     private int capaciteDeTransport;
 
 
-    /**
-     * @return
-     */
     public void chargemenPersonnage() {
-        // TODO implement here
-        return null;
+
     }
 
-    /**
-     * @return
-     */
     public void niveauPersonnage() {
-        // TODO implement here
-        return null;
+
     }
 
-    /**
-     * @return
-     */
     public void appelerObjet() {
-        // TODO implement here
-        return null;
+
     }
 
-    /**
-     * @return
-     */
     public void attaquer() {
-        // TODO implement here
-        return null;
+    	
     }
 
-    /**
-     * @return
-     */
+ 
     public int getDegatsAttaque() {
-        // TODO implement here
-        return 0;
+    	int nombreAleatoire = (int)(Math.random() * ((niveauAttaque) + 1));
+        return nombreAleatoire;
     }
 
-    /**
-     * @return
-     */
+  
     public int getNiveauDefence() {
-        // TODO implement here
-        return 0;
+    	int nombreAleatoire = (int)(Math.random() * ((niveauDeDefense) + 1));
+        return nombreAleatoire;
     }
 
-    /**
-     * @return
-     */
+   
     public void seDeplacer() {
-        // TODO implement here
-        return null;
+    
     }
 
-    /**
-     * @return
-     */
     public void inspecterObjet() {
-        // TODO implement here
-        return null;
     }
 
-    /**
-     * @return
-     */
     public void inspecterPiece() {
-        // TODO implement here
-        return null;
+    }
+    
+    public void  description() {
+    	System.out.println("Nom : "+nom+" - Profession : "+profession+" - HP : "+pointsDeVie+" - Def : "+niveauDeDefense+
+    			" / Atk : "+niveauAttaque+" - Places d'objet : "+capaciteDeTransport);
     }
 
 }
