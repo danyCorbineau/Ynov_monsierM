@@ -1,34 +1,22 @@
-
+package commepackagenormal;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Porte {
 
-    /**
-     * Default constructor
-     */
-    public Porte() {
+
+    public Porte(String nom, Lieu lieu) {
+    	this.nom = nom;
+    	this.lieu = lieu;
     }
 
-    /**
-     * 
-     */
+
     String nom;
 
-    /**
-     * 
-     */
     Lieu lieu;
 
-
-    /**
-     * @return
-     */
     void donneAcces() {
-        // TODO implement here
-        return null;
+
     }
 
 }
