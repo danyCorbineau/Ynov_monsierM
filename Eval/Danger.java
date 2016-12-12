@@ -1,5 +1,10 @@
 package Eval;
-import java.util.*;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 
@@ -40,6 +45,29 @@ public class Danger {
     {
     	return this.nom;
     }
+    
+    public static void loadDangers(String fName,List<Danger> dangers) throws FileNotFoundException
+    {
+    	DataInputStream dis = new DataInputStream(new FileInputStream(new File(fName)));
+    	
+    	
+    	try {
+    		while(true)
+			{
+    			dangers.add(new Danger(dis.readLine()));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    	try {
+			dis.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
 
 
 }
