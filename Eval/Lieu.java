@@ -21,12 +21,12 @@ public class Lieu {
 
  
     void explorer() {
-
+// Penser à la liaison de portes
     }
 
 
-    void prendreObjet() {
-
+    public void seDecrire() {
+    	System.out.println(nom +"\n"+ description);
     }
 
 }

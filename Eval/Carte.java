@@ -46,14 +46,17 @@ public class Carte {
 			{
 				splitArrayLieu = splitArraySalle[i].split("\\");
 				
-				listLieux.add(new Lieu(splitArrayLieu[0], splitArrayLieu[1]))
+				listLieux.add(new Lieu(splitArrayLieu[0], splitArrayLieu[1]));
+				
+				splitArrayPorte = splitArraySalle[2].split("\" \"");
+				
+				listPortes.add(new Porte(splitArrayPorte[0], listLieux.get(i), splitArrayPorte[1]));
 			}
 		
 	}
 
-
-    
-
+	
+	
 	String nom;
 
     List<Lieu> listLieux= new ArrayList<>();
@@ -62,9 +65,19 @@ public class Carte {
     
     List<Porte> listPortes= new ArrayList<>();
 
-
-
     
+    
+    
+    public void describe() {
+		for (int i = 0; i < listLieux.size(); i++){
+			
+			listLieux.get(i).seDecrire();
+		}
+	}
+    
+
+
+  
     public int getSize()
     {
     	return this.listLieux.size();
