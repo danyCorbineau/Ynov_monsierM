@@ -1,21 +1,34 @@
 package commepackagenormal;
 import java.util.*;
 import java.io.*;
-
+import java.io.File;
 
 public class Carte {
 
 
-    @SuppressWarnings("deprecation")
-	public Carte() throws FileNotFoundException {
 
-			DataInputStream dis = new DataInputStream(new FileInputStream(new File("carteTest.txt")));
+	@SuppressWarnings("deprecation")
+	public Carte(String nomFichier) throws FileNotFoundException {
+
+			DataInputStream dis = new DataInputStream(new FileInputStream(new File(nomFichier)));
+			
+			String string ="";
+			
 			try {
-				dis.readLine();
+				String temp;
+				while ((temp=dis.readLine())!=null) {
+					string += temp+"\n";
+				}
 			} catch (IOException e) {
-				System.out.println("Y'a une couille dans Carte !");
+				System.out.println("Si cette exception s'affiche, c'est normal !");
+				System.out.println(string);
 				e.printStackTrace();
+
 			}
+			
+
+			System.out.println(string);
+			
 			try {
 				dis.close();
 			} catch (IOException e) {
@@ -23,10 +36,20 @@ public class Carte {
 				e.printStackTrace();
 			}
 
+			String[] splitArraySalle;
+			String[] splitArrayLieu;
+			String[] splitArrayPorte;
+			
+			splitArraySalle = string.split(">");
+			
+			for (int i = 0; i < splitArraySalle.length; i++)
+			{
+				splitArrayLieu = splitArraySalle[i].split("\\");
+				
+				listLieux.add(new Lieu(splitArrayLieu[0], splitArrayLieu[1]))
+			}
 		
-    }
-
-
+	}
 
 
     
@@ -35,13 +58,12 @@ public class Carte {
 
     List<Lieu> listLieux= new ArrayList<>();
 
-
+    
+    
     List<Porte> listPortes= new ArrayList<>();
 
 
-    void chargerCarte() {
-        
-    }
+
     
     public int getSize()
     {
