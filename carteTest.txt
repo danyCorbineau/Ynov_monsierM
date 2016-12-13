@@ -1,22 +1,13 @@
 <
 "Entrée"
-
-
+\
 L'entrée abrite une charmante desserte où l'on peut déposer des objets en arrivant.
 Un porte-manteau permet de laisser son parapluie et d'accrocher son manteau.
-
-
+\
 "porte gauche" "Salon"
 "enfilade de droite" "Couloir"
 "devant" "Escalier"
-
-
-
-
-
-
-
-
+>
 <
 "Salon"
 \
