@@ -1,7 +1,7 @@
 La maison de Providence
-carte.txt
-objets.csv
-grands-anciens.csv
+carteTest.txt
+Objets.csv
+danger.csv
 La maison de Providence vous fait plonger dans l'ambiance angoissante et mystérieuse
 d'une petite ville américaine à la fin du siècle dernier.
 Dans cette maison, des choses étranges et dangereuses ont depuis longtemps découragé
