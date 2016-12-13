@@ -26,7 +26,10 @@ public class Menu {
 		
 		while(loop)
 		{
-			System.out.println("1 : Choisir un niveau\n2 : Choisir un personnage\n3 : Jouer\n4 : Quitter\n");
+			if(!s.haveNiveau()){ System.out.println("1 : Choisir un niveau"); }
+			if(!s.havePerso()){ System.out.println("2 : Choisir un personnage"); }
+			if(s.isValide()){ System.out.println("3 : Jouer"); }
+			System.out.println("4 : Quitter");
 			
 			try
 			{
@@ -55,12 +58,16 @@ public class Menu {
 							System.out.print("    -"+j+": ");
 							p.description();
 						}
-						System.out.println("Tapez le n° du personnage que vous voulez incarner.");
+						System.out.println("-- !! Tapez le n° du personnage que vous voulez incarner. !! --");
 						int i=sc.nextInt();
-						s.setPersonnage(listePerso.get(i));
+						if(i<listePerso.size()&&i>0)
+						{
+							s.setPersonnage(listePerso.get(i));
+							System.out.println("--- Vous incarner un personnage.");
+						}
 						
 					} catch (FileNotFoundException e) {
-						System.out.println("--- Le personnages n'existe pas. ---");
+						System.out.println("--- Les personnages n'existes pas. ---");
 					}
 					
 					break;
@@ -69,10 +76,16 @@ public class Menu {
 					{
 						s.startSenario();
 					}
-					else
+					else if(s.haveNiveau())
 					{
-						System.out.println("--- Il faut choisir un personnage et un niveau. ---");
+						System.out.println("--- Il faut choisir un personnage. ---");
 					}
+					else if(s.havePerso())
+					{
+						System.out.println("--- Il faut choisir un niveau. ---");
+					}
+					else
+						System.out.println("--- Il faut choisir un personnage et un niveau. ---");
 					
 					break;
 				case 4: loop=false; break;

@@ -27,6 +27,15 @@ public class Scenario {
     	return niveau!=null && personnage!= null;
     }
     
+    public boolean haveNiveau()
+    {
+    	return niveau!=null;
+    }
+    public boolean havePerso()
+    {
+    	return personnage!=null;
+    }
+    
     public void startSenario()
     {
     	
