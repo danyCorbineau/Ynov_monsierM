@@ -1,27 +1,18 @@
+package Eval;
 
-import java.util.*;
+//Par Malo Dupont
 
-/**
- * 
- */
-public class Information extends Objet {
-
-    /**
-     * Default constructor
-     */
-    public Information() {
-    }
-
-    /**
-     * 
-     */
-    private String description;
-
-    /**
-     * 
-     */
-    void getDescription() {
-        // TODO implement here
+public class Information extends Objet {	
+	
+	
+    public Information(String itemRoom, String name, String description) {
+  		this.itemRoom = itemRoom;
+  		this.name = name;
+    	this.description = description;
+    	}
+    
+    public void describe(){
+    	System.out.println("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".\nVoici ma description : "+description);
     }
 
 }
