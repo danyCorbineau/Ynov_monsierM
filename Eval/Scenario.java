@@ -1,5 +1,7 @@
 package Eval;
 
+import java.io.FileNotFoundException;
+
 public class Scenario {
 	private Niveau niveau;
     private Personnage personnage;
@@ -14,16 +16,22 @@ public class Scenario {
     {
     	this.personnage=p;
     }
-    public void setLevel(String levelName)
+    public void setLevel(String levelName) throws FileNotFoundException
     {
     	niveau=new Niveau();
+    	niveau.charger(levelName);
     }
     
     public boolean isValide()
     {
     	return niveau!=null && personnage!= null;
     }
-
+    
+    public void startSenario()
+    {
+    	
+    }
+    
     
 
 

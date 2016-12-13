@@ -2,45 +2,55 @@ package Eval;
 import java.util.*;
 import java.io.*;
 
+//Par Malo Dupont
+
 public class Objet {
 
-    private String name;
+    protected String name;
     protected String itemRoom;
-    protected ArrayList<String> listeResult;
-    private String[] itemsParam;
-    
-    public Objet(){
-    	
-    }
-    
-    public Objet(String name){
-    	this.name = name;
-    }
-    
-    public Objet(String name, String itemRoom){
-    	this.name = name;
-    	this.itemRoom = itemRoom;
-    }
+    protected String description;
+    protected int itemSize;
 
     public String getName() {return name;}
 
 
-    public ArrayList<String> csvToArrayList() throws FileNotFoundException {
+    public static ArrayList<Objet> csvToArrayList(String fileName) throws FileNotFoundException {
     	
-    	Scanner sc = new Scanner(new File("/Users/Malo/Documents/YNOV Ingésup B1/Projet P1 12-16 dec 2016/test.csv"));
-    	sc.useDelimiter(";");
+    	Scanner sc = new Scanner(new File(fileName));
+    	sc.useDelimiter("\n");
     	
-    	ArrayList<String> listeResult = new ArrayList<>();
+    	ArrayList<Objet> listeResult = new ArrayList<>();
         
     	while(sc.hasNext()){
-    		listeResult.add(sc.next());
+    		listeResult.add(toSpecificSubObject(sc.next()));
     	}
+    	
     	sc.close();
-    	
-    	
-    	this.listeResult = listeResult;
     	
     	return listeResult;
     }
+    
+    
+    public static Objet toSpecificSubObject(String aString) {
+    	
+		String t[] = new String[5];
+    	t = aString.split(";");
+    	
+    	if(t[2].compareTo("I") == 0){
+    		return new Information(t[0],t[1],t[3]);
+    	}else if(t[2].compareTo("O") == 0){
+    		return new Utilisable(t[0],t[1],t[3],Integer.parseInt(t[4]));
+    	}else if(t[2].compareTo("C") == 0){
+    		return new ClePorteSecrete(t[0],t[1],t[3]);
+    	}  	
+    	
+    	return null;
+    }
+    
+    public void describe(){
+    	System.out.print("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".");
+    }
+    
+    
     
 }

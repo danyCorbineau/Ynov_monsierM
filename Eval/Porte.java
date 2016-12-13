@@ -1,22 +1,44 @@
-package commepackagenormal;
+package Eval;
 import java.util.*;
 
 
 public class Porte {
+	String nom;
+    String lieuAr;
+    int key=0;
 
-
-    public Porte(String nom, Lieu lieu) {
+    public Porte(String nom, String lieuAr) {
     	this.nom = nom;
-    	this.lieu = lieu;
+    	this.lieuAr = lieuAr;
+    }
+    
+    public void setKey(int k)
+    {
+    	this.key=k;
     }
 
 
-    String nom;
+	public String getNom() {
+		return nom;
+	}
 
-    Lieu lieu;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    void donneAcces() {
 
-    }
+	public String getLieuAr() {
+		return lieuAr;
+	}
+
+	public void setLieuAr(String lieuAr) {
+		this.lieuAr = lieuAr;
+	}
+	
+	public void describe()
+	{
+		System.out.println("Porte: "+nom+" vers "+lieuAr);
+	}
+	
 
 }

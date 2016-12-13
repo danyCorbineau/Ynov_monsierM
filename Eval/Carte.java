@@ -1,21 +1,40 @@
-package commepackagenormal;
+package Eval;
 import java.util.*;
 import java.io.*;
 
-
 public class Carte {
+	String nom;
+    List<Lieu> listLieux= new ArrayList<>();
 
 
-    @SuppressWarnings("deprecation")
-	public Carte() throws FileNotFoundException {
+	public Carte(String nomFichier) throws FileNotFoundException {
 
-			DataInputStream dis = new DataInputStream(new FileInputStream(new File("carteTest.txt")));
+			DataInputStream dis = new DataInputStream(new FileInputStream(new File(nomFichier)));
+			String fulltext="";
+			
+			String temp;
 			try {
-				dis.readLine();
-			} catch (IOException e) {
-				System.out.println("Y'a une couille dans Carte !");
-				e.printStackTrace();
+				while(( temp=dis.readLine())!=null)
+				{
+					fulltext+=temp;
+				}
+			} catch (IOException e1) {
 			}
+			
+			
+			String[] strLieu=fulltext.split(">");
+			
+			for(String s: strLieu)
+			{
+				
+				String[] strParam=s.split("\\\\");
+				listLieux.add(new Lieu(strParam[0],strParam[1]));
+				
+				String[] strPorte=strParam[2].split("\n");
+				listLieux.get(listLieux.size()-1).chargerPorte(strPorte);
+			}
+			
+			
 			try {
 				dis.close();
 			} catch (IOException e) {
@@ -23,26 +42,23 @@ public class Carte {
 				e.printStackTrace();
 			}
 
+			
 		
-    }
+	}
+
+	
+	
+	
 
 
+    public void describe() {
+		for (int i = 0; i < listLieux.size(); i++){
+			listLieux.get(i).seDecrire();
+		}
+		
+		
+	}
 
-
-    
-
-	String nom;
-
-    List<Lieu> listLieux= new ArrayList<>();
-
-
-    List<Porte> listPortes= new ArrayList<>();
-
-
-    void chargerCarte() {
-        
-    }
-    
     public int getSize()
     {
     	return this.listLieux.size();

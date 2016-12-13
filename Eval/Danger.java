@@ -46,15 +46,15 @@ public class Danger {
     	return this.nom;
     }
     
-    public static void loadDangers(String fName,List<Danger> dangers) throws FileNotFoundException
+    public static List<Danger> loadDangers(String fName,List<Danger> dangers) throws FileNotFoundException
     {
     	DataInputStream dis = new DataInputStream(new FileInputStream(new File(fName)));
     	
-    	
     	try {
-    		while(true)
+    		String s;
+    		while((s=dis.readLine())!=null)
 			{
-    			dangers.add(new Danger(dis.readLine()));
+    			dangers.add(new Danger(s));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -66,6 +66,7 @@ public class Danger {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    	return dangers;
     }
     
 

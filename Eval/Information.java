@@ -1,21 +1,18 @@
 package Eval;
 
+//Par Malo Dupont
 
-public class Information extends Objet {
-	
-	private String description;
-
+public class Information extends Objet {	
 	
 	
-    public Information() {
-    	if(listeResult.get(2) == "I" || listeResult.get(2) == "O"){
-    		this.description = listeResult.get(3);    		
+    public Information(String itemRoom, String name, String description) {
+  		this.itemRoom = itemRoom;
+  		this.name = name;
+    	this.description = description;
     	}
-    	
-    	
+    
+    public void describe(){
+    	System.out.println("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".\nVoici ma description : "+description);
     }
-
-
-    public String getDescription() {return description;}
 
 }

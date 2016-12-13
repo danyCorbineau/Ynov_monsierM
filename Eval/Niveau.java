@@ -22,7 +22,7 @@ public class Niveau {
 	
     public Niveau() {
     	dangers=new ArrayList<>();
-    	carte=new Carte();
+    	carte=null;
     	objets=new ArrayList<>();
     	
     	
@@ -35,15 +35,21 @@ public class Niveau {
     	
     	try {
 			nom=dis.readLine();
-			// carte.load(dis.readLine());
-	    	// objets.load(dis.readLine());
-	    	Danger.loadDangers(dis.readLine(), dangers);
+			carte=new Carte(dis.readLine());
+			objets=Objet.csvToArrayList(dis.readLine());
+			dangers=Danger.loadDangers(dis.readLine(), dangers);
 	    	
-	    	description=dis.readUTF();
+	    	description="";
+	    	String s;
+	    	while((s=dis.readLine())!=null)
+	    		description+=s+"\n";
+	    	
 		} catch (IOException e) {
-			System.out.println(nom+"\nDescription:	"+this.description+
-					"\n -- Ce Niveau contient "+""+" Salles, "+""+" Objets et "+""+" Dangers.");
+			
 		}
+    	System.out.println(nom+"\nDescription:	"+this.description+
+				"\n -- Ce Niveau contient "+carte.getSize()+" Salles, "+objets.size()+" Objets et "+dangers.size()+" Dangers.");
+    	
     	
     	try {
 			dis.close();
