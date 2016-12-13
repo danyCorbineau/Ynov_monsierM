@@ -1,0 +1,85 @@
+<
+"Entrée"
+
+
+L'entrée abrite une charmante desserte où l'on peut déposer des objets en arrivant.
+Un porte-manteau permet de laisser son parapluie et d'accrocher son manteau.
+
+
+"porte gauche" "Salon"
+"enfilade de droite" "Couloir"
+"devant" "Escalier"
+
+
+
+
+
+
+
+
+<
+"Salon"
+\
+Le charmant salon dispose d’une table en son centre sur laquelle semble posée un verre dont la liqueur est totalement évaporée.
+\
+"porte gauche" "Entrée"
+"porte" "Bibliothèque"
+"passage-secret" "Couloir" 1
+>
+<
+"Bibliothèque"
+\
+Le plus impressionnant dans cette bibliothèque sont les murs tapissés de livres tous plus anciens les uns que les autres.
+D'étranges auteurs au nom imprononçables semblent avoir rédigé des ouvrages dont la lecture pourrait être périlleuse.
+Est-il possible qu'un livre puisse rendre fou ?
+\
+"porte" "Salon"
+>
+<
+"Couloir"
+\
+Le couloir semble s'étirer sans fin…
+\
+"arrière" "Entrée"
+"porte vitrée" "Cuisine"
+"porte rouge" "Chambre"
+"porte centrale" "Chambre verte"
+"porte bleue" "Salle de bain"
+>
+<
+"Chambre"
+\
+La chambre propose un grand lit à l'air confortable.
+\
+"petite porte" "Chambre verte"
+>
+<
+"Chambre verte"
+\
+La chambre verte sent un peu l'humidité. Ses lourdes fenêtres de bois ont l'air d'avoir été scellées par le temps.
+\
+"petite porte" "Chambre"
+>
+<
+"Escalier"
+\
+L'escalier est sans conteste un bel ouvrage.
+\
+"monter" "Etage"
+"descendre "Cave"
+"derrière" "Entrée"
+>
+<
+"Etage"
+\
+L'étage s'atteint rapidement.
+\
+"descendre" "Escalier"
+>
+<
+"Cave"
+\
+La cave, quoique sombre, renvoie des effluves de poussière, de liège et de vin.
+\
+"monter" "Escalier"
+>
