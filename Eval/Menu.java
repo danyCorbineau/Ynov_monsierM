@@ -6,18 +6,28 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+ * Dany CORBINEAU ; dany.corbineau@ynov.com
+ * Classe Menu: Permet à l'utilisateur de choisir un niveau, un personnage et de lancer le scénario
+ */
+
+
 public class Menu {
-	Scenario s;
-	List<Personnage> listePerso;
+	private Scenario s;
+	private List<Personnage> listePerso;
 	
-	
+	/**
+	 * Constructeur
+	 */
 	public Menu()
 	{
 		s=new Scenario();
 		listePerso=new ArrayList<>();
-		//load perso
 	}
 	
+	/**
+	 * Lancement du jeu
+	 */
 	public void start()
 	{
 		Scanner sc=new Scanner(System.in);
@@ -69,24 +79,16 @@ public class Menu {
 					} catch (FileNotFoundException e) {
 						System.out.println("--- Les personnages n'existes pas. ---");
 					}
-					
 					break;
 				case 3: 
 					if(s.isValide())
-					{
 						s.startSenario();
-					}
 					else if(s.haveNiveau())
-					{
 						System.out.println("--- Il faut choisir un personnage. ---");
-					}
 					else if(s.havePerso())
-					{
 						System.out.println("--- Il faut choisir un niveau. ---");
-					}
 					else
 						System.out.println("--- Il faut choisir un personnage et un niveau. ---");
-					
 					break;
 				case 4: loop=false; break;
 				}
@@ -96,11 +98,8 @@ public class Menu {
 				sc.nextLine();
 				System.out.println("---!!!! Données invalide !!!!---");
 			}
-			
 		}
-		
-		
-		
+		sc.close();
 	}
 	
 	
