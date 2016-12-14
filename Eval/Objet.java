@@ -3,6 +3,9 @@ import java.util.*;
 import java.io.*;
 
 //Par Malo Dupont
+//Classe parente des objets,regroupe les methodes pour importer le fichier .csv, le lire et le convertir, pour créer des instances d'objets
+
+//Petite note : Il n'y a pas forcement toutes les methodes necessaires pour l'instant (notamment pour les interactions), 
 
 public class Objet {
 
@@ -11,9 +14,8 @@ public class Objet {
     protected String description;
     protected int itemSize;
 
-    public String getName() {return name;}
 
-
+    //Convertit les données du fichier specifie en entree (.csv) en ArrayList
     public static ArrayList<Objet> csvToArrayList(String fileName) throws FileNotFoundException {
     	
     	Scanner sc = new Scanner(new File(fileName));
@@ -31,6 +33,7 @@ public class Objet {
     }
     
     
+    //Convertit le String specifie en entree (String provenant de l'ArrayList precedente) en instanciant les subclasses de la classe Objet
     public static Objet toSpecificSubObject(String aString) {
     	
 		String t[] = new String[5];
@@ -47,6 +50,7 @@ public class Objet {
     	return null;
     }
     
+    //Decrit chacune des instances des trois subClasses (cette methode est redefinie pour chaque subclass si besoin, selon les differents parametres a afficher
     public void describe(){
     	System.out.print("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".");
     }
