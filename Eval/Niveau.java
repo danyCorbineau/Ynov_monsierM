@@ -7,9 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
+/*
+ * Dany CORBINEAU ; dany.corbineau@ynov.com
+ * Classe Niveau: Permet de charger un niveau et de controller tout les elements du niveau (dangers, carte, objets) du jeux
  */
+
 public class Niveau {
 	
 	private List<Danger> dangers;
@@ -19,16 +21,21 @@ public class Niveau {
     private String nom;
     private String description;
     
-	
+	/**
+	 * Constructeur qui initialise les attributes
+	 */
     public Niveau() {
     	dangers=new ArrayList<>();
     	carte=null;
     	objets=new ArrayList<>();
-    	
-    	
-    	
     }
     
+    
+    /**
+     * charge tout les elements du niveau 
+     * @param fileName nom du fichier du niveau moins .txt
+     * @throws FileNotFoundException exception si un fichier n'a pas été trouvé
+     */
     public void charger(String fileName) throws FileNotFoundException
     {
     	DataInputStream dis = new DataInputStream(new FileInputStream(new File(fileName)));
