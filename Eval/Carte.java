@@ -8,8 +8,9 @@ import java.io.*;
 
 	// A partir d'un fichier .txt, la classe carte récupère les informations et les classes en fonction de leur type dans les classes Lieu et Porte
 public class Carte {
-	String nom;
-    List<Lieu> listLieux= new ArrayList<>();
+	
+	private String nom;
+    private List<Lieu> listLieux= new ArrayList<>();
 
 
     
@@ -23,7 +24,7 @@ public class Carte {
 			try {
 				while(( temp=dis.readLine())!=null)
 				{
-					fulltext+=temp;
+					fulltext+=temp+"\n";
 				}
 			} catch (IOException e1) {
 			}
@@ -35,10 +36,14 @@ public class Carte {
 			{
 				
 				String[] strParam=s.split("\\\\");
-				listLieux.add(new Lieu(strParam[0],strParam[1]));
+				if (strParam.length>1) {
+				listLieux.add(new Lieu(strParam[0].split("\"")[1],strParam[1]));
+				
 				
 				String[] strPorte=strParam[2].split("\n");
+				
 				listLieux.get(listLieux.size()-1).chargerPorte(strPorte);
+			}
 			}
 			
 			
@@ -53,8 +58,8 @@ public class Carte {
 		
 	}
 
-	
-	
+// ajouter une méthode static dans carte pour connaitre les porte d'un lieu en rentrant un lieu	
+// Convertir String nom de lieu en lieu
 	
 
 	// Cette méthode permet de vérifier si la carte à bien été chargé. Elle permet également de visualiser la carte.
@@ -62,10 +67,16 @@ public class Carte {
 		for (int i = 0; i < listLieux.size(); i++){
 			listLieux.get(i).seDecrire();
 		}
-		
+	
 		
 	}
-    // Permet de connaitre le nombre de lieux que possède une carte.
+    // Permet de récuperer le premier lieu d'une carte (la première salle, le point de départ du niveau...)
+    public Lieu getPremierLieux() 
+    {
+		return listLieux.get(0);
+	}
+
+	// Permet de connaitre le nombre de lieux que possède une carte.
     public int getSize()
     {
     	return this.listLieux.size();

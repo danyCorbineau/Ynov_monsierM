@@ -1,4 +1,4 @@
-package Eval;
+package commepackagenormal;
 import java.util.*;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
@@ -7,28 +7,41 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
  * 
  */
 public class Lieu {
-	List<Porte> listPortes= new ArrayList<>();
+	
+	// lieu visité ? (boolean + get set)
+	
+	private List<Porte> listPortes= new ArrayList<>();
 
+    private String nom;
+
+    private String description;
+
+	private boolean visite = false;
+	
+	
     public Lieu(String nom, String description) {
     	this.nom = nom;
     	this.description = description;
     }
 
+	
+    public boolean isVisite() {
+		return visite;
+	}
 
-    String nom;
+
+	public void setVisite(boolean visite) {
+		this.visite = visite;
+	}
 
 
-    String description;
-
-
- 
-    void explorer() {
+	void explorer() {
 // Penser à la liaison de portes
     }
 
 
     public void seDecrire() {
-    	System.out.println("Lieu: "+nom +"\n"+ description);
+    	System.out.println("\nLieu: "+nom +"\n"+ description +"\nCette pièce possède "+listPortes.size()+" portes\n");
     	for(Porte p: listPortes)
     	{
     		System.out.print(" --- ");
@@ -42,14 +55,18 @@ public class Lieu {
     }
     
     public void chargerPorte(String[] portes)
-    {
+    { 
     	for(String s: portes)
     	{
+			
+
     		String[] str=s.split("\"");
-    		
-    		this.listPortes.add(new Porte(str[0],str[1]));
-    		if(str.length==3)
-    			this.listPortes.get(this.listPortes.size()-1).setKey(Integer.valueOf(str[2]));
+    		if(str.length>1)
+    		{
+    			this.listPortes.add(new Porte(str[1],str[3]));
+        		if(str.length>4)
+        			this.listPortes.get(this.listPortes.size()-1).setKey(Integer.valueOf(str[4].split(" ")[1]));
+    		}
     		
     	}
     }

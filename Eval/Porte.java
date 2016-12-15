@@ -1,12 +1,16 @@
-package Eval;
+package commepackagenormal;
 import java.util.*;
 
 
-public class Porte {
-	String nom;
-    String lieuAr;
-    int key=0;
 
+	//Cette classe permet d'instancier les portes (et autres acces) que l'on va lier à des lieux précis dans la classe Lieu.
+
+public class Porte {
+	private String nom;
+    private String lieuAr;
+    private int key=0;
+    private boolean bloque;
+    
     public Porte(String nom, String lieuAr) {
     	this.nom = nom;
     	this.lieuAr = lieuAr;
@@ -37,8 +41,18 @@ public class Porte {
 	
 	public void describe()
 	{
+		if (key == 0)
 		System.out.println("Porte: "+nom+" vers "+lieuAr);
+		else
+		System.out.println("Porte: "+nom+" vers "+lieuAr+ ", Clé : "+ key);
+	}
+
+	public boolean isBloque() {
+		return bloque;
+	}
+
+	public void setBloque(boolean bloque) {
+		this.bloque = bloque;
 	}
 	
-
 }
