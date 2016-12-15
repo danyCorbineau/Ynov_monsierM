@@ -17,15 +17,22 @@ public class ClePorteSecrete extends Objet {
     
     
     //voir dans Objet
-    public void describe(){
-    	System.out.println("Je suis l'objet "+name+", présent dans la salle "+itemRoom+". J'ouvre le passage "+accessType);
+    public void getAction(){
+    	System.out.println(name+", ouvre la porte "+accessType+".\033[3m"+description+"\033[0m.");
     }
 
     
-    //Méthode pour créer un nouveau passage, non terminé, il faut faire le lien avec la partie de Nicolas
-    void addNewRoom(String newRoomName, String accessType) {
-    	//new Lieu();
-
+    /*Méthode pour créer un nouveau passage, non terminé, il faut faire le lien avec la partie de Nicolas
+    *void addNewRoom(String newRoomName, String accessType) {
+    *	new Porte(this.newRoomName, this.accessType);
     }
+	*/
+
+	@Override
+	void utliserObjet() {
+		
+		
+		
+	}
 
 }

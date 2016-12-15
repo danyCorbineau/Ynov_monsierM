@@ -13,8 +13,14 @@ public class Information extends Objet {
     	}
     
     //voir dans Objet
-    public void describe(){
-    	System.out.println("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".\nVoici ma description : "+description);
+    public void getAction(){
+    	System.out.println(name+"\n\033[3m"+description+"\033[0m.");
     }
+
+	@Override
+	void utliserObjet() {
+		
+		this.getAction();
+	}
 
 }

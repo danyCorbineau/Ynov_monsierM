@@ -14,8 +14,16 @@ public class Utilisable extends Objet {
     }
    
     //voir dans Objet
-    public void describe() {
-    	System.out.println("Je suis l'objet "+name+", présent dans la salle "+itemRoom+", je prends "+itemSize+" places dans l'inventaire.\nVoici ma description : "+description);
+    public void getAction() {
+    	System.out.println(name+", "+itemSize+" places dans l'inventaire.\n\033[3m"+description+"\033[0m.");
     }
+
+	@Override
+	void utliserObjet() {
+		
+		
+	}
+    
+    
 
 }

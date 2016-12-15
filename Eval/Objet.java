@@ -7,7 +7,7 @@ import java.io.*;
 
 //Petite note : Il n'y a pas forcement toutes les methodes necessaires pour l'instant (notamment pour les interactions), 
 
-public class Objet {
+public abstract class Objet {
 
     protected String name;
     protected String itemRoom;
@@ -45,16 +45,26 @@ public class Objet {
     		return new Utilisable(t[0],t[1],t[3],Integer.parseInt(t[4]));
     	}else if(t[2].compareTo("C") == 0){
     		return new ClePorteSecrete(t[0],t[1],t[3]);
-    	}  	
-    	
+    	}  	    	
     	return null;
     }
     
     //Decrit chacune des instances des trois subClasses (cette methode est redefinie pour chaque subclass si besoin, selon les differents parametres a afficher
-    public void describe(){
-    	System.out.print("Je suis l'objet "+name+", présent dans la salle "+itemRoom+".");
-    }
+    abstract void getAction();
     
+    
+    abstract void utliserObjet();
+    
+    
+    //Transmet les objets presents dans une salle précise donnee en parametre
+    public void getItemInRoom(Objet objet, Lieu room) {
+    	System.out.println("Dans la pièce"+room+", on trouve les(l') objet(s) suivant(s) : ");
+    	
+    	while(objet.itemRoom == room.nom){
+    		System.out.println("> "+objet.name+";");
+    	}
+    	
+    }
     
     
 }
