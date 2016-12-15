@@ -1,4 +1,4 @@
-package Eval;
+package p;
 
 //Par Malo Dupont
 //
@@ -19,7 +19,6 @@ public class Information extends Objet {
 
 	@Override
 	void utliserObjet() {
-		
 		this.getAction();
 	}
 

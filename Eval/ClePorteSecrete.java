@@ -1,4 +1,4 @@
-package Eval;
+package p;
 
 //Par Malo Dupont
 //Classe pour les objets qui ouvrent des passages secrets, menant à d'autres salles, voire à la sortie 
@@ -30,6 +30,7 @@ public class ClePorteSecrete extends Objet {
 
 	@Override
 	void utliserObjet() {
+		
 		
 		
 		

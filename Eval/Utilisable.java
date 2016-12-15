@@ -1,4 +1,4 @@
-package Eval;
+package p;
 
 //Par Malo Dupont
 //Classe pour les objets utilisables, que l'on peut mettre dans l'inventaire
@@ -20,7 +20,7 @@ public class Utilisable extends Objet {
 
 	@Override
 	void utliserObjet() {
-		
+		Inventaire.ajouterObjet();
 		
 	}
     
