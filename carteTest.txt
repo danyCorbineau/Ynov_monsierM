@@ -50,6 +50,7 @@ La chambre propose un grand lit à l'air confortable.
 La chambre verte sent un peu l'humidité. Ses lourdes fenêtres de bois ont l'air d'avoir été scellées par le temps.
 \
 "petite porte" "Chambre"
+"Retoure entrée" "Entrée"
 >
 <
 "Escalier"
@@ -73,4 +74,11 @@ L'étage s'atteint rapidement.
 La cave, quoique sombre, renvoie des effluves de poussière, de liège et de vin.
 \
 "monter" "Escalier"
+>
+<
+"Salle de bain"
+\
+La salle de bain de jeu
+\
+"fuire" "Couloir"
 >

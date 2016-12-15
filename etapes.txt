@@ -26,3 +26,11 @@ si attaquer:
 
 peut importe l'action:
 pour chaque danger: attaquer
+
+1
+niveau
+2
+personnages
+0
+
+3
