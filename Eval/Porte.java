@@ -9,7 +9,6 @@ public class Porte {
 	private String nom;
     private String lieuAr;
     private int key=0;
-    private boolean bloque;
     
     public Porte(String nom, String lieuAr) {
     	this.nom = nom;
@@ -48,16 +47,22 @@ public class Porte {
 	}
 
 	public boolean isBloque() {
-		return bloque;
+		return key!=0;
 	}
 
 	public void setBloque(boolean bloque) {
-		this.bloque = bloque;
+		if(!bloque)
+			key=0;
 	}
 	
 	public String getDest()
 	{
 		return lieuAr;
+	}
+	
+	public int getKeyId()
+	{
+		return this.key;
 	}
 	
 	

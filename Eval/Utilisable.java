@@ -1,5 +1,7 @@
 package p;
 
+import java.util.List;
+
 //Par Malo Dupont
 //Classe pour les objets utilisables, que l'on peut mettre dans l'inventaire
 
@@ -14,16 +16,17 @@ public class Utilisable extends Objet {
     }
    
     //voir dans Objet
-    public void getAction() {
-    	System.out.println(name+", "+itemSize+" places dans l'inventaire.\n"+description+".");
+    public String getAction() {
+    	return (name+", "+itemSize+" places dans l'inventaire.\n"+description+".");
     }
 
 	@Override
-	void utliserObjet() {
-		//Inventaire.ajouterObjet();
-		
+	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
+		listObj.remove(this);
+		p.addObjet(this);
+		return null;
 	}
-    
+
     
 
 }

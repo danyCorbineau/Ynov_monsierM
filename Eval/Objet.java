@@ -20,11 +20,11 @@ public abstract class Objet {
     	
     	Scanner sc = new Scanner(new File(fileName));
     	sc.useDelimiter("\n");
-    	
+    	int nbCle=0;
     	ArrayList<Objet> listeResult = new ArrayList<>();
         
     	while(sc.hasNext()){
-    		listeResult.add(toSpecificSubObject(sc.next()));
+    		listeResult.add(toSpecificSubObject(sc.next(),nbCle));
     	}
     	
     	sc.close();
@@ -39,26 +39,28 @@ public abstract class Objet {
     
     
     //Convertit le String specifie en entree (String provenant de l'ArrayList precedente) en instanciant les subclasses de la classe Objet
-    public static Objet toSpecificSubObject(String aString) {
+    public static Objet toSpecificSubObject(String aString,int nbCleActuel) {
     	
 		String t[] = new String[5];
     	t = aString.split(";");
     	
+    	
     	if(t[2].compareTo("I") == 0){
     		return new Information(t[0],t[1],t[3]);
     	}else if(t[2].compareTo("O") == 0){
-    		return new Utilisable(t[0],t[1],t[3],Integer.parseInt(t[4]));
+    		return new Utilisable(t[0],t[1],t[3],1);
     	}else if(t[2].compareTo("C") == 0){
-    		return new ClePorteSecrete(t[0],t[1],t[3]);
+    		nbCleActuel++;
+    		return new ClePorteSecrete(t[0],t[1],t[3],nbCleActuel);
     	}  	    	
     	return null;
     }
     
     //Decrit chacune des instances des trois subClasses (cette methode est redefinie pour chaque subclass si besoin, selon les differents parametres a afficher
-    abstract void getAction();
+    abstract String getAction();
     
     
-    abstract void utliserObjet();
+    abstract public String utliserObjet(Personnage p,Carte c,List<Objet> listObj);
     
     
     //Transmet les objets presents dans une salle précise donnee en parametre
@@ -73,5 +75,9 @@ public abstract class Objet {
     	return lo;
     }
     
+    public String getName()
+    {
+    	return this.name;
+    }
     
 }

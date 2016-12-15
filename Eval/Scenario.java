@@ -81,7 +81,7 @@ public class Scenario {
     		int choix;
     		boolean loop=true;
     		
-    		System.out.println("Vous avez choisie "+niveau.getName());// name
+    		System.out.println("Vous avez choisi "+niveau.getName());// name
     		room=new Room(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
     		
     		
@@ -89,7 +89,16 @@ public class Scenario {
     		while(!niveau.allVisited() && niveau.getNbDanger()>0 && loop)
     		{
     			room.affDataRoom();
-    			System.out.println("Que voulez vous faire?");
+    			
+    			try {
+    				if(room.haveDanger())
+    					personnage.prendreDegats(room.dangerAttaquer());
+				} catch (mortPersonnageException e) {
+					System.out.println(" ---!!! Vous avez perdu !!!--- ");
+					loop=false;
+				}
+    			
+    			System.out.println("Que voulez vous faire ?");
     			
     			System.out.println("  --1: Inspecter");
     			System.out.println("  --2: Changer de salle");
@@ -100,6 +109,8 @@ public class Scenario {
         			System.out.println("  --5: Attaquer le danger");
     			}
     			
+    			
+    			
     			try
         		{
         			choix=sc.nextInt();
@@ -109,51 +120,74 @@ public class Scenario {
         			switch(choix)
         			{
         			case 1:
-        				room.affAllIteminRoom();
-        				
-        				
+        				if(room.affAllIteminRoom())
+        				{
+        					System.out.println("Taper le numero de l'objet a voir ou utiliser.");
+            				choix=sc.nextInt();
+            				if(choix>0&&choix-1<room.getNbObj())
+            				{
+            					System.out.println("Taper 1 pour activer l'objet ou 2 pour voire la description");
+            					int utilisation=sc.nextInt();
+            					if(utilisation==1)
+            					{
+            						Objet oTemp=room.getObj(choix-1);
+            						String s=oTemp.utliserObjet(personnage,niveau.getCarte(),niveau.getAllObjet());
+            					}
+            					else if(utilisation==2)
+            					{
+            						room.affObjet(choix-1);
+            					}
+            				}
+        				}
         				break;
         			case 2: 
         				room.describeRoom();
         				choix=sc.nextInt();
         				if(choix>0 && choix-1<room.getNbPort())
         				{
-        					Lieu lieu=niveau.getLieuByName(room.getPortDestById(choix-1));
-            				if(lieu!=null)
-            					room=new Room(lieu,niveau.getAllObjet(),niveau.getDangers());
-           					else
-           						System.out.println("!!!! une erreur est survenue !!!! Imposible de changer.");      					
+        					 if(!room.portBloque(choix-1))
+        					 {
+        						 System.out.println("change vers: "+room.getPortDestById(choix-1));
+        						 Lieu lieu=niveau.getLieuByName(room.getPortDestById(choix-1));
+                 				if(lieu!=null)
+                 					room=new Room(lieu,niveau.getAllObjet(),niveau.getDangers());
+                					else
+                						System.out.println("!!!! Une erreur est survenue !!!! Impossible de changer.");   
+        					 }
+        					 else
+        					 {
+        						 System.out.println(" La porte est bloqué.");
+        					 }
         				}
+        				break;
+        			case 3:
+        				System.out.println("Inventaire: ");
+        				personnage.afficherInventaire();
+        				
         				break;
         			case 4: room.affDanger(); break;
         			case 5: 
         				try {
 							personnage.attaquer(room.getDanger());
 						} catch (DangerMeurtException e1) {
-							System.out.println("  --!! Vous avez battue un danger !!--  ");
+							System.out.println("  --!! Vous avez battu un danger !!--  ");
 							niveau.removeDanger(room.getDanger());
 							if(niveau.getNbDanger()==0)
 							{
-								System.out.println("------!!!!!! Bravo vous avez battue tout les dangez !!!!!!------");
+								System.out.println("------!!!!!! Bravo, vous avez battu tout les dangers !!!!!!------");
 							}
 							
 						}
         				break;
         			}
-        			try {
-        				if(room.haveDanger())
-        					personnage.prendreDegats(room.dangerAttaquer());
-					} catch (mortPersonnageException e) {
-						System.out.println(" ---!!! Vous avez perdue !!!--- ");
-						loop=false;
-					}
+        			
         			
         			
         		}
         		catch(InputMismatchException e)
         		{
         			sc.nextLine();
-        			System.out.println("---!!!! Données invalide !!!!---");
+        			System.out.println("---!!!! Données invalides !!!!---");
         		}
     		}
     	}

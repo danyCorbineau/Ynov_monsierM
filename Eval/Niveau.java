@@ -106,6 +106,13 @@ public class Niveau {
     {
     	return carte.getLieuByName(name);
     }
+    
+    public Carte getCarte()
+    {
+    	return this.carte;
+    }
+    
+   
 
     
 

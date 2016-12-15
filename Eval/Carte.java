@@ -105,5 +105,14 @@ public class Carte {
     	return null;
     }
     
+    public void debloquerPorte(int clePorte)
+    {
+    	for(Lieu l: this.listLieux)
+    	{
+    		l.debloquerPorte(clePorte);
+    	}
+    	
+    }
+    
 
 }

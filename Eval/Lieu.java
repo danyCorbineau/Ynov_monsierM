@@ -43,7 +43,7 @@ public class Lieu {
     public void seDecrire() {
     	System.out.println("\nLieu: "+nom +"\n"+ description +"\nCette pièce possède "+listPortes.size()+" portes\n");
     	int j=1;
-    	System.out.print(" --- "+0+": ne rien faire.");
+    	System.out.println(" --- "+0+": ne rien faire.");
     	for(Porte p: listPortes)
     	{
     		System.out.print(" --- "+j+": ");
@@ -68,7 +68,10 @@ public class Lieu {
     		{
     			this.listPortes.add(new Porte(str[1],str[3]));
         		if(str.length>4)
+        		{
+        			System.out.println("add key to "+str[1]+" "+Integer.valueOf(str[4].split(" ")[1]));
         			this.listPortes.get(this.listPortes.size()-1).setKey(Integer.valueOf(str[4].split(" ")[1]));
+        		}
     		}
     		
     	}
@@ -83,6 +86,25 @@ public class Lieu {
     {
     	return this.listPortes.get(id).getDest();
     }
+    
+    public void debloquerPorte(int clePorte)
+    {
+    	for(Porte p: this.listPortes)
+    	{
+    		if(p.getKeyId()==clePorte)
+    		{
+    			p.setBloque(false);
+    		}
+    	}
+    }
+    
+    public boolean porteBloque(int idPorte)
+    {
+    	return this.listPortes.get(idPorte).isBloque();
+    }
+    
+    
+    
     
 
 }

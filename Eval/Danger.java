@@ -47,7 +47,7 @@ public class Danger {
      */
     public void perdPv(int pv) throws DangerMeurtException
     {
-    	System.out.println(this.nom+" ce fait démonter.");
+    	System.out.println(this.nom+" se fait démonter.");
     	this.pv-=pv;
     	if(pv<=0)
     		throw new DangerMeurtException(this);

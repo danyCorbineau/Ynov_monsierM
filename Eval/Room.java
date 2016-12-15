@@ -26,7 +26,7 @@ public class Room{
 			System.out.print("Il y a 1 danger et il y a ");
 		else
 			System.out.print("Il n'y a pas de danger et il y a ");
-		System.out.println(o.size()+" objets.");
+		System.out.println(o.size()+" objet(s).");
 	}
 	
 	public boolean haveDanger()
@@ -62,16 +62,53 @@ public class Room{
 		return this.l.getPortDestById(id);
 	}
 	
-	public void affAllIteminRoom()
+	public boolean affAllIteminRoom()
 	{
-		System.out.println("Objet dans "+l.getName()+" :");
-		for(Objet ob: o)
+		if(o.size()>0)
 		{
-			ob.getAction();
+			System.out.println("Objet dans "+l.getName()+" :");
+			int j=1;
+			System.out.println("0: ne rien faire.");
+			for(Objet ob: o)
+			{
+				System.out.println(j+": "+ob.getAction());
+				j++;
+			}
+			return true;
 		}
-		
+		else
+		{
+			System.out.println("   ---!!! Il n'y a rien à voir ici !!!---   ");
+			return false;
+		}
+	}
+	public int getNbObj()
+	{
+		return this.o.size();
+	}
+	public void affObjet(int id)
+	{
+		System.out.println(this.o.get(id).getAction());
+	}
+	public Objet getObj(int id)
+	{
+		return this.o.get(id);
+	}
+	
+	public boolean portBloque(int idPorte)
+	{
+		return this.l.porteBloque(idPorte);
+	}
+	
+	public void affAllObj()
+	{
+		int j=0;
+		for(Objet ob: this.o)
+		{
+			System.out.println("--- "+j+" --- "+ob.getName());
+			j++;
+		}
 	}
 	
 	
-
 }

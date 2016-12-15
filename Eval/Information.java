@@ -1,5 +1,7 @@
 package p;
 
+import java.util.List;
+
 //Par Malo Dupont
 //
 
@@ -13,13 +15,16 @@ public class Information extends Objet {
     	}
     
     //voir dans Objet
-    public void getAction(){
-    	System.out.println(name+"\n"+description+".");
+    public String getAction(){
+    	return (name+"\n"+description+".");
     }
 
 	@Override
-	void utliserObjet() {
-		this.getAction();
+	public String utliserObjet(Personnage p,Carte c,List<Objet> listObj) {
+		listObj.remove(this);
+		return description;
 	}
+
+	
 
 }

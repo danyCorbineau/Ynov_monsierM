@@ -116,7 +116,7 @@ public class Personnage {
     	if (degatsRecus > 0) 
     		pointsDeVie = pointsDeVie - (degatsRecus);   		
     	
-    	System.out.println(this.nom+" c'est fait attaquer.");
+    	System.out.println(this.nom+" s'est fait attaquer.");
     	if (pointsDeVie <= 0)
     		throw new mortPersonnageException();
     	
