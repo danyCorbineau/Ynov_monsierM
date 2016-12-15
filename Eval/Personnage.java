@@ -1,4 +1,4 @@
-package com.ynov.p1;
+package p;
 
 import java.io.DataInputStream;
 import java.io.File;

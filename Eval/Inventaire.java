@@ -1,4 +1,4 @@
-package com.ynov.p1;
+package p;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Inventaire {
  */
 	public void afficherObjet() {
 		for(Objet anItem : objets) {
-			anItem.describe(); 
+			anItem.getAction(); 
 		}
 		
 	}
