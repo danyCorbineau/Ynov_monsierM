@@ -1,4 +1,4 @@
-package commepackagenormal;
+package p;
 
 //Nicolas Durand
 
@@ -11,7 +11,7 @@ public class Carte {
 	
 	private String nom;
     private List<Lieu> listLieux= new ArrayList<>();
-
+    private boolean totalVisite = false;
 
     
     // Ce constructeur permet de charger un fichier carte.txt et d'en récupérer les informations.
@@ -70,7 +70,20 @@ public class Carte {
 	
 		
 	}
-    // Permet de récuperer le premier lieu d'une carte (la première salle, le point de départ du niveau...)
+    public boolean isTotalVisite() {
+		return totalVisite;
+	}
+
+	public boolean getTotalVisite(boolean totalVisite) {
+		for(Lieu lieu : listLieux) {
+			if (!lieu.isVisite()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// Permet de récuperer le premier lieu d'une carte (la première salle, le point de départ du niveau...)
     public Lieu getPremierLieux() 
     {
 		return listLieux.get(0);

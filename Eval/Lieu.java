@@ -1,4 +1,4 @@
-package commepackagenormal;
+package p;
 import java.util.*;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
