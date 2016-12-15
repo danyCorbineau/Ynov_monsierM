@@ -1,0 +1,49 @@
+package com.ynov.p1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+ * Jérémy NUNES
+ * Cette classe gère les objets possédés par le personnage.
+ */
+
+public class Inventaire {
+
+// Crée une liste d'objets	
+    private List<Objet> objets;
+    
+    
+    public Inventaire() {
+    objets = new ArrayList <Objet>();	
+    }
+    
+    
+/*
+ * Ajoute un objet à l'inventaire du personnage.
+ */
+	public boolean ajouterObjet(Objet objet) {
+		return objets.add(objet);
+	}
+	
+
+/*
+ * Supprime un objet de l'inventaire du personnage.
+ */
+	public boolean supprimerObjet(Objet objet) {
+		return objets.remove(objet);
+	}
+	
+
+/*
+ * Affiche la description d'un objet possédé par le personnage à partir du fichier "Objets.csv".
+ * Méthode "describe" comprise dans la classe "Objet".
+ */
+	public void afficherObjet() {
+		for(Objet anItem : objets) {
+			anItem.describe(); 
+		}
+		
+	}
+	 
+}

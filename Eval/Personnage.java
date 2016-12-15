@@ -29,9 +29,11 @@ public class Personnage {
 
     private int capaciteDeTransport;
     
+    private Inventaire inventaire;
     
-/*Les objets établis pour le personnage.
- *Les informations sont chargés à partir du fichier "Personnages.csv".
+    
+/* Les objets établis pour le personnage.
+ * Les informations sont chargés à partir du fichier "Personnages.csv".
  */
     public Personnage(String str) {
         
@@ -44,6 +46,7 @@ public class Personnage {
     	niveauAttaque=Integer.valueOf(s2[4]);
     	capaciteDeTransport=Integer.valueOf(s2[5]);
     	pointsDeVieMax = pointsDeVie;	
+    	inventaire = new Inventaire();
     }
     
     
@@ -164,7 +167,7 @@ public class Personnage {
     
 /*
  * Demande au joueur s'il veut fouiller ou non la salle dans laquelle il est présent.
- * Si le joueur ne répond par par 0 (Non) ou par 1 (Oui) alors la question lui sera reposé en boucle.    
+ * Si le joueur ne répond pas par 0 (Non) ou par 1 (Oui) alors la question lui sera reposé en boucle.    
  */
     public static void inspecterPiece() {
     	
@@ -199,5 +202,29 @@ public class Personnage {
     			", une défense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
     			" et je peux porter jusqu'à "+capaciteDeTransport+" objets.");
     }
+    
+    
+/*
+ * Ajoute un objet à l'inventaire du personnage.
+ */
+    public void addObjet(Objet test) {
+    	inventaire.ajouterObjet(test);
+    }
+  
+    
+/*
+ * Supprime un objet de l'inventaire du personnage.
+ */
+    public void delObjet(Objet test) {
+    	inventaire.supprimerObjet(test);
+    }
 
+    
+/*
+ * Affiche l'inventaire
+ */
+    public void afficherInventaire() {
+    	inventaire.afficherObjet();
+    }
+   
 }
