@@ -32,6 +32,11 @@ public abstract class Objet {
     	return listeResult;
     }
     
+    public String getNameRoom()
+    {
+    	return this.itemRoom;
+    }
+    
     
     //Convertit le String specifie en entree (String provenant de l'ArrayList precedente) en instanciant les subclasses de la classe Objet
     public static Objet toSpecificSubObject(String aString) {
@@ -57,13 +62,15 @@ public abstract class Objet {
     
     
     //Transmet les objets presents dans une salle précise donnee en parametre
-    public void getItemInRoom(Objet objet, Lieu room) {
-    	System.out.println("Dans la pièce"+room+", on trouve les(l') objet(s) suivant(s) : ");
-    	
-    	while(objet.itemRoom == room.nom){
-    		System.out.println("> "+objet.name+";");
+    public static List<Objet> getItemsInRoom(Lieu room,List<Objet> l) {
+    	List<Objet> lo=new ArrayList<>();
+    	int c=0;
+    	for(Objet o: l)
+    	{
+    		if(o.getNameRoom().compareTo(room.getName())==0)
+    			lo.add(o);
     	}
-    	
+    	return lo;
     }
     
     

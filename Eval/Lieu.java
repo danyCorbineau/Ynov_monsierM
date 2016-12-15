@@ -10,13 +10,13 @@ public class Lieu {
 	
 	// lieu visité ? (boolean + get set)
 	
-	private List<Porte> listPortes= new ArrayList<>();
+	protected List<Porte> listPortes= new ArrayList<>();
 
-    private String nom;
+	protected String nom;
 
-    private String description;
+	protected String description;
 
-	private boolean visite = false;
+	protected boolean visite = false;
 	
 	
     public Lieu(String nom, String description) {
@@ -42,16 +42,19 @@ public class Lieu {
 
     public void seDecrire() {
     	System.out.println("\nLieu: "+nom +"\n"+ description +"\nCette pièce possède "+listPortes.size()+" portes\n");
+    	int j=1;
+    	System.out.print(" --- "+0+": ne rien faire.");
     	for(Porte p: listPortes)
     	{
-    		System.out.print(" --- ");
+    		System.out.print(" --- "+j+": ");
     		p.describe();
+    		j++;
     	}
     	
     }
     public String getName()
     {
-    	return this.getName();
+    	return this.nom;
     }
     
     public void chargerPorte(String[] portes)
@@ -69,6 +72,16 @@ public class Lieu {
     		}
     		
     	}
+    }
+    
+    public int getNbPort()
+    {
+    	return this.listPortes.size();
+    }
+    
+    public String getPortDestById(int id)
+    {
+    	return this.listPortes.get(id).getDest();
     }
     
 

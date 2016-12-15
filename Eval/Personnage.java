@@ -116,11 +116,12 @@ public class Personnage {
     	if (degatsRecus > 0) 
     		pointsDeVie = pointsDeVie - (degatsRecus);   		
     	
-    	
+    	System.out.println(this.nom+" c'est fait attaquer.");
     	if (pointsDeVie <= 0)
     		throw new mortPersonnageException();
     	
     	int pdvPourCent = (pointsDeVie*100) / pointsDeVieMax;
+    	
     	
     	System.out.println("Il reste à "+nom+" : "+pointsDeVie+" HP. ("+pdvPourCent+")");
     }
@@ -129,7 +130,8 @@ public class Personnage {
 /*
  * Le personnage entame une action d'attaque.    
  */
-    public void attaquer() {
+    public void attaquer(Danger d) throws DangerMeurtException {
+    	d.perdPv(this.getDegatsAttaque());
     }
 
 
@@ -165,28 +167,7 @@ public class Personnage {
     }
 
     
-/*
- * Demande au joueur s'il veut fouiller ou non la salle dans laquelle il est présent.
- * Si le joueur ne répond pas par 0 (Non) ou par 1 (Oui) alors la question lui sera reposé en boucle.    
- */
-    public static void inspecterPiece() {
-    	
-    	Scanner sc = new Scanner(System.in);
-    	int inspecterPiece = 0;
-    	do{
-    		System.out.println("Souhaitez vous fouiller la salle ? Répondre 0 pour Non & 1 pour Oui.");
-            inspecterPiece = sc.nextInt();
-            
-            if(inspecterPiece != 1 && inspecterPiece != 2)
-                System.out.println("Mode inconnu. Souhaitez vous fouiller la salle ? Répondre 0 pour Non & 1 pour Oui.");
-            
-            else if (inspecterPiece == 1)
-            		System.out.println("Vous avez décidé de fouiller la pièce.");
-            
-            else if (inspecterPiece == 0)
-            		System.out.println("Vous avez décidé de ne pas fouiller la pièce.");
-    	}while(inspecterPiece !=0 && inspecterPiece !=1);
-    }
+
 /* 
  * Lorsqu'un personnage change de pièce..
  * 

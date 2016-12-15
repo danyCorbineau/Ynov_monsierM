@@ -1,4 +1,4 @@
-package Eval;
+package p;
 /*
  * Dany CORBINEAU; dany.corbineau@ynov.com
  * Classe DangerMeurtException: A utiliser pour générer une exeption si un danger n'a plus de PV

@@ -1,4 +1,4 @@
-package Eval;
+package p;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,9 +47,11 @@ public class Danger {
      */
     public void perdPv(int pv) throws DangerMeurtException
     {
+    	System.out.println(this.nom+" ce fait démonter.");
     	this.pv-=pv;
     	if(pv<=0)
     		throw new DangerMeurtException(this);
+    	System.out.println("Il reste à "+this.nom+" "+this.pv+" HP");
     }
     
     /**
@@ -57,7 +59,7 @@ public class Danger {
      */
     public String toString()
     {
-		return nom+" "+pv+" "+attaque;
+		return "Monstre "+nom+" "+pv+" Pv "+attaque+" att";
     }
     
     /**

@@ -1,4 +1,4 @@
-package com.ynov.p1;
+package p;
 
 /*
  * Jérémy NUNES

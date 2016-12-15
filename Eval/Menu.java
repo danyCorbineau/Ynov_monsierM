@@ -1,9 +1,10 @@
-package Eval;
+package p;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /*
@@ -70,7 +71,7 @@ public class Menu {
 						}
 						System.out.println("-- !! Tapez le n° du personnage que vous voulez incarner. !! --");
 						int i=sc.nextInt();
-						if(i<listePerso.size()&&i>0)
+						if(i<listePerso.size()&&i>=0)
 						{
 							s.setPersonnage(listePerso.get(i));
 							System.out.println("--- Vous incarner un personnage.");
@@ -82,7 +83,9 @@ public class Menu {
 					break;
 				case 3: 
 					if(s.isValide())
-						s.startSenario();
+					{
+						s.startSenario(sc);
+					}
 					else if(s.haveNiveau())
 						System.out.println("--- Il faut choisir un personnage. ---");
 					else if(s.havePerso())
@@ -98,6 +101,8 @@ public class Menu {
 				sc.nextLine();
 				System.out.println("---!!!! Données invalide !!!!---");
 			}
+
+			
 		}
 		sc.close();
 	}

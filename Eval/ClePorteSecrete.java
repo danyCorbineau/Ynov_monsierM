@@ -18,7 +18,7 @@ public class ClePorteSecrete extends Objet {
     
     //voir dans Objet
     public void getAction(){
-    	System.out.println(name+", ouvre la porte "+accessType+".\033[3m"+description+"\033[0m.");
+    	System.out.println(name+", ouvre la porte "+accessType+"."+description+".");
     }
 
     

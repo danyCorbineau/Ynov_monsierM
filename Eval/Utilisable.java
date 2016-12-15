@@ -15,12 +15,12 @@ public class Utilisable extends Objet {
    
     //voir dans Objet
     public void getAction() {
-    	System.out.println(name+", "+itemSize+" places dans l'inventaire.\n\033[3m"+description+"\033[0m.");
+    	System.out.println(name+", "+itemSize+" places dans l'inventaire.\n"+description+".");
     }
 
 	@Override
 	void utliserObjet() {
-		Inventaire.ajouterObjet();
+		//Inventaire.ajouterObjet();
 		
 	}
     

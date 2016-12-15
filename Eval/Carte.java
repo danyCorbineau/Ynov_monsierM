@@ -95,5 +95,15 @@ public class Carte {
     	return this.listLieux.size();
     }
     
+    public Lieu getLieuByName(String name)
+    {
+    	for(Lieu l: this.listLieux)
+    	{
+    		if(l.getName().compareTo(name)==0)
+    			return l;
+    	}
+    	return null;
+    }
+    
 
 }

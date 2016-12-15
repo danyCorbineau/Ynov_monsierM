@@ -1,4 +1,4 @@
-package Eval;
+package p;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -63,6 +63,48 @@ public class Niveau {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    	//lieuActuel=carte.getfirstLieu();
+    	
+    }
+    
+    public String getName()
+    {
+    	return this.nom;
+    }
+    
+    public int getNbDanger()
+    {
+    	return this.dangers.size();
+    }
+    
+    public boolean allVisited()
+    {
+    	return carte.isTotalVisite();
+    }
+    
+    public Lieu getFirstLieu()
+    {
+    	return carte.getPremierLieux();
+    }
+    
+    public List<Danger> getDangers()
+    {
+    	return this.dangers;
+    }
+    
+    public List<Objet> getAllObjet()
+    {
+    	return this.objets;
+    }
+    
+    public void removeDanger(Danger d)
+    {
+    	this.dangers.remove(d);
+    }
+    
+    public Lieu getLieuByName(String name)
+    {
+    	return carte.getLieuByName(name);
     }
 
     
