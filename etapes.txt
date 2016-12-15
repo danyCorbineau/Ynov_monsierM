@@ -1,0 +1,28 @@
+initialiser le joueur dans la map
+
+1: demander a chaque objet les actions et les afficher  //objet get action ou aff action  // niveau affobj action (lieu)
+2: demander a chaque porte sa phrase et les afficher	// describ porte // niveau afficher porte (lieu)
+3: demander pour ouvrir l'inventaire	// jeremy -> inventaire
+4: attaquer danger
+
+: attendre la choix de l'utilisateur
+
+si objet:
+	-si objet information: afficher information
+	-si objet utilisable: mis dans l'inventaire
+	-si objet clé: mise dans inventaire clé
+
+si porte: si le joueur le peut il change de pièce -> noté que la pièce est visité	// set porte visité + change pièce
+
+
+si inventaire: afficher l'inventaire
+	si 0: on quitte
+	si x,1: on affiche l'objet (description)
+	si x,2: on utilise l'objet	// use objet
+
+si attaquer:
+	joueur infige déga;
+
+
+peut importe l'action:
+pour chaque danger: attaquer

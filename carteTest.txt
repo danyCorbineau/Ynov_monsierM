@@ -57,7 +57,7 @@ La chambre verte sent un peu l'humidité. Ses lourdes fenêtres de bois ont l'air 
 L'escalier est sans conteste un bel ouvrage.
 \
 "monter" "Etage"
-"descendre "Cave"
+"descendre" "Cave"
 "derrière" "Entrée"
 >
 <
