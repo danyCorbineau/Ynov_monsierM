@@ -1,12 +1,19 @@
-package Eval;
+package commepackagenormal;
+
+//Nicolas Durand
+
 import java.util.*;
 import java.io.*;
 
+
+	// A partir d'un fichier .txt, la classe carte récupère les informations et les classes en fonction de leur type dans les classes Lieu et Porte
 public class Carte {
 	String nom;
     List<Lieu> listLieux= new ArrayList<>();
 
 
+    
+    // Ce constructeur permet de charger un fichier carte.txt et d'en récupérer les informations.
 	public Carte(String nomFichier) throws FileNotFoundException {
 
 			DataInputStream dis = new DataInputStream(new FileInputStream(new File(nomFichier)));
@@ -50,7 +57,7 @@ public class Carte {
 	
 	
 
-
+	// Cette méthode permet de vérifier si la carte à bien été chargé. Elle permet également de visualiser la carte.
     public void describe() {
 		for (int i = 0; i < listLieux.size(); i++){
 			listLieux.get(i).seDecrire();
@@ -58,7 +65,7 @@ public class Carte {
 		
 		
 	}
-
+    // Permet de connaitre le nombre de lieux que possède une carte.
     public int getSize()
     {
     	return this.listLieux.size();
