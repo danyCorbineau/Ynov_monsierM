@@ -41,9 +41,9 @@ public class Porte {
 	public void describe()
 	{
 		if (key == 0)
-		System.out.println("Porte: "+nom+" vers "+lieuAr);
+		System.out.println(nom+" vers "+lieuAr);
 		else
-		System.out.println("Porte: "+nom+" vers "+lieuAr+ ", Clé : "+ key);
+		System.out.println(nom+" vers "+lieuAr+ ", Clé : "+ key);
 	}
 
 	public boolean isBloque() {

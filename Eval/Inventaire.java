@@ -41,9 +41,9 @@ public class Inventaire {
  */
 	public void afficherObjet() {
 		int j=1;
-		System.out.println("--- 0: Ne rien faire");
+		Main.println(" >> 0: Ne rien faire");
 		for(Objet anItem : objets) {
-			System.out.println("--- "+j+": "+anItem.getAction()); 
+			Main.println(" >> "+j+": "+anItem.getAction()); 
 			j++;
 		}
 		

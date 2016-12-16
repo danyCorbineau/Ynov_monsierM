@@ -47,22 +47,22 @@ public class Danger {
      */
     public void perdPv(int pv) throws DangerMeurtException
     {
-    	System.out.println(this.nom+" se fait démonter.");
+    	System.out.println("Le monstre "+this.nom+" se fait démonter !");
     	this.pv-=pv;
     	if(this.pv<=0)
     	{
     		throw new DangerMeurtException(this);
     	}
     	
-    	System.out.println("Il reste à "+this.nom+" "+this.pv+" HP");
+    	System.out.println("\n--> Il reste au monstre "+this.nom+" "+this.pv+"HP !");
     }
     
     /**
-     * retourn une description de l'objet
+     * retourne une description de l'objet
      */
     public String toString()
     {
-		return "Monstre "+nom+" "+pv+" Pv "+attaque+" att";
+		return "Monstre "+nom+" "+pv+"HP "+attaque+" att";
     }
     
     /**

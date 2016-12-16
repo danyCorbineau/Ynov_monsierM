@@ -41,12 +41,12 @@ public class Lieu {
 
 
     public void seDecrire() {
-    	System.out.println("\nLieu: "+nom +"\n"+ description +"\nCette pièce possède "+listPortes.size()+" portes\n");
+    	System.out.println("\n--> Vous êtes dans "+nom+".\n"+description+"\nCette pièce possède "+listPortes.size()+" portes.\n");
     	int j=1;
-    	System.out.println(" --- "+0+": ne rien faire.");
+    	System.out.println(" >> "+0+": ne rien faire.");
     	for(Porte p: listPortes)
     	{
-    		System.out.print(" --- "+j+": ");
+    		System.out.print(" >> "+j+": ");
     		p.describe();
     		j++;
     	}

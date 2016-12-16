@@ -22,7 +22,7 @@ public class ClePorteSecrete extends Objet {
     
     //voir dans Objet
     public String getAction(){
-    	return (name+", ouvre la porte "+accessType+"."+description+".");
+    	return ("\n--> L'objet "+name+", ouvre la porte "+accessType+".\n"+description+".");
     }
 
     
@@ -37,7 +37,7 @@ public class ClePorteSecrete extends Objet {
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
 		listObj.remove(this);
 		c.debloquerPorte(this.cleId);
-		System.out.println("Porte avec clée"+ cleId +"débloqué.");
+		System.out.println("\n--> La Porte a été débloquée avec la clé "+ cleId +".\n");
 		return null;
 	}
 
