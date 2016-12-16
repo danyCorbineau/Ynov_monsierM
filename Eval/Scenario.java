@@ -86,7 +86,7 @@ public class Scenario {
     		
     		
     		
-    		while(!niveau.allVisited() && niveau.getNbDanger()>0 && loop)
+    		while( (!niveau.allVisited() || niveau.getNbDanger()>0) && loop)
     		{
     			room.affDataRoom();
     			
@@ -96,13 +96,14 @@ public class Scenario {
 				} catch (mortPersonnageException e) {
 					System.out.println(" ---!!! Vous avez perdu !!!--- ");
 					loop=false;
+					continue;
 				}
     			
     			System.out.println("Que voulez vous faire ?");
     			
     			System.out.println("  --1: Inspecter");
     			System.out.println("  --2: Changer de salle");
-    			System.out.println("  --3: Ouvrire l'inventaire");
+    			System.out.println("  --3: Ouvrir l'inventaire");
     			if(room.haveDanger())
     			{
     				System.out.println("  --4: Inspecter le danger");
@@ -180,7 +181,7 @@ public class Scenario {
 							personnage.attaquer(room.getDanger());
 						} catch (DangerMeurtException e1) {
 							System.out.println("  --!! Vous avez battu un danger !!--  ");
-							niveau.removeDanger(room.getDanger());
+							niveau.removeDanger(room.suprDanger());
 							if(niveau.getNbDanger()==0)
 							{
 								System.out.println("------!!!!!! Bravo, vous avez battu tout les dangers !!!!!!------");
