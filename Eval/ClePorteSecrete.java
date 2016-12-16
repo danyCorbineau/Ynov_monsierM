@@ -7,13 +7,13 @@ import java.util.List;
 
 public class ClePorteSecrete extends Objet {
 
-    protected String newpieceName;
+    protected String newRoomName;
     protected String accessType;
     int cleId;
     
     //Constructeur pour definir un objet qui ouvre un passage secret
-    public ClePorteSecrete(String itempiece, String name, String accessType,int id) {
-    	this.itempiece = itempiece;
+    public ClePorteSecrete(String itemRoom, String name, String accessType,int id) {
+    	this.itemRoom = itemRoom;
     	this.name = name;
     	this.accessType = accessType;
     	this.cleId=id;
@@ -27,8 +27,8 @@ public class ClePorteSecrete extends Objet {
 
     
     /*Méthode pour créer un nouveau passage, non terminé, il faut faire le lien avec la partie de Nicolas
-    *void addNewpiece(String newpieceName, String accessType) {
-    *	new Porte(this.newpieceName, this.accessType);
+    *void addNewRoom(String newRoomName, String accessType) {
+    *	new Porte(this.newRoomName, this.accessType);
     }
 	*/
 

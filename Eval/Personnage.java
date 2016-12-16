@@ -84,6 +84,7 @@ public class Personnage {
  */
     public void niveauPersonnage() {
     }
+    
 
     
 /*
@@ -216,11 +217,6 @@ public class Personnage {
 	public void utiliserObjInventaire(int id, Carte c, List<Objet> lo)
 	{
 		inventaire.utiliserObj(id, this, c, lo);
-	}
-	
-	public boolean peutPorterDautreObjet()
-	{
-		return inventaire.getNbObjet()<this.capaciteDeTransport;
 	}
 
    

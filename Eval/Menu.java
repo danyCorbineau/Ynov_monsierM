@@ -34,13 +34,24 @@ public class Menu {
 		Scanner sc=new Scanner(System.in);
 		boolean loop=true;
 		
+		System.out.println();
+		System.out.println("#--------------------------------------------------------------------------------------------------------------------------------#\n"+
+						   "|  _       ___     ___  ____   _______ _____ ___________ _____ _____ _   _ _____ _____     _____ ______ _____ _____ _____ _____  |\n"+
+						   "| | |     / _ \\    |  \\/  \\ \\ / /  ___|_   _|  ___| ___ \\_   _|  ___| | | /  ___|  ___|   |  __ \\| ___ \\  _  |_   _|_   _|  ___| |\n"+
+						   "| | |    / /_\\ \\   | .  . |\\ V /\\ `--.  | | | |__ | |_/ / | | | |__ | | | \\ `--.| |__     | |  \\/| |_/ / | | | | |   | | | |__   |\n"+
+						   "| | |    |  _  |   | |\\/| | \\ /  `--. \\ | | |  __||    /  | | |  __|| | | |`--. \\  __|    | | __ |    /| | | | | |   | | |  __|  |\n"+
+						   "| | |____| | | |   | |  | | | | /\\__/ / | | | |___| |\\ \\ _| |_| |___| |_| /\\__/ / |___    | |_\\ \\| |\\ \\\\ \\_/ / | |   | | | |___  |\n"+
+						   "| \\_____/\\_| |_/   \\_|  |_/ \\_/ \\____/  \\_/ \\____/\\_| \\_|\\___/\\____/ \\___/\\____/\\____/     \\____/\\_| \\_|\\___/  \\_/   \\_/ \\____/  |\n"+                                                    
+						   "|                                                                                                                                |\n"+
+						   "#--------------------------------------------------------------------------------------------------------------------------------#\n");
+		
 		
 		while(loop)
 		{
-			if(!s.haveNiveau()){ System.out.println("1 : Choisir un niveau"); }
-			if(!s.havePerso()){ System.out.println("2 : Choisir un personnage"); }
-			if(s.isValide()){ System.out.println("3 : Jouer"); }
-			System.out.println("4 : Quitter");
+			if(!s.haveNiveau()){ Main.println("1 : Choisir un niveau"); }
+			if(!s.havePerso()){ Main.println("2 : Choisir un personnage"); }
+			if(s.isValide()){ Main.println("3 : Jouer"); }
+			Main.print("4 : Quitter\n> ");
 			
 			try
 			{
@@ -48,37 +59,38 @@ public class Menu {
 				{
 				case 1: 
 					try {
-						System.out.println("Nom du fichier niveau:");
+						
+						Main.print("\n--> Nom du fichier niveau :\n> ");
 						s.setLevel(sc.next()+".txt");
 					} catch (FileNotFoundException e) {
-						System.out.println("--- Les niveau n'existe pas. ---");
+						System.err.println("\n/!\\ Ce niveau n'existe pas /!\\\n");
 					}
 					break;
 				case 2: 
 					try {
-						System.out.println("Nom du fichier personnage:");
+						Main.println("\n--> Nom du fichier personnage :\n>");
 						while(listePerso.size()>0)
 							listePerso.remove(0);
 						
 						Personnage.chargementP(sc.next()+".csv", listePerso);
 						
-						System.out.println(listePerso.size()+" personnages chargées.");
+						Main.println("--> "+listePerso.size()+" personnages chargés.\n");
 						for(int j=0 ; j<listePerso.size() ; j++)
 						{
 							Personnage p=listePerso.get(j);
-							System.out.print("    -"+j+": ");
+							System.out.print("  >> "+j+" : ");
 							p.description();
 						}
-						System.out.println("-- !! Tapez le n° du personnage que vous voulez incarner. !! --");
+						Main.print("\n--> Quel personnage souhaitez vous incarner ?\n> ");
 						int i=sc.nextInt();
 						if(i<listePerso.size()&&i>=0)
 						{
 							s.setPersonnage(listePerso.get(i));
-							System.out.println("--- Vous incarner un personnage.");
+							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(0)+" !\n");
 						}
 						
 					} catch (FileNotFoundException e) {
-						System.out.println("--- Les personnages n'existes pas. ---");
+						System.err.println("\n/!\\ Ce personnage n'existe pas /!\\\n");
 					}
 					break;
 				case 3: 
@@ -99,7 +111,7 @@ public class Menu {
 			catch(InputMismatchException e)
 			{
 				sc.nextLine();
-				System.out.println("---!!!! Données invalide !!!!---");
+				System.err.println("/!\\ Données invalides ! /!\\");
 			}
 
 			
