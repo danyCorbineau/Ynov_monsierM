@@ -3,6 +3,8 @@ package p;
 import java.util.List;
 import java.util.Scanner;
 
+import p.Main;
+
 public class Piece {
 	private Lieu l;
 	private Danger d=null;
@@ -21,26 +23,27 @@ public class Piece {
 	
 	public void afficherChoixUtilisateur()
 	{
-		System.out.println("Que voulez vous faire ?");
+		Main.println("\n--> Que voulez-vous faire ?\n");
 		
-		System.out.println("  --1: Inspecter");
-		System.out.println("  --2: Changer de salle");
-		System.out.println("  --3: Ouvrir l'inventaire");
+		Main.println(" >> 1: Inspecter");
+		System.out.println(" >> 2: Changer de salle");
+		System.out.println(" >> 3: Ouvrir l'inventaire");
 		if(this.existeDanger())
 		{
-			System.out.println("  --4: Inspecter le danger");
-			System.out.println("  --5: Attaquer le danger");
+			System.out.println(" >> 4: Inspecter le danger");
+			System.out.println(" >> 5: Attaquer le danger");
 		}
+		Main.print("\n> ");
 	}
 	
 	
 	public void affDatapiece()
 	{
-		System.out.println("Vous êtes dans la salle "+l.getName());
+		Main.println("\n--> Vous êtes dans la salle "+l.getName()+".");
 		if(d!=null)
-			System.out.print("Il y a 1 danger et il y a ");
+			System.out.print("\n--> Dans cette salle, il y a 1 danger, ainsi que ");
 		else
-			System.out.print("Il n'y a pas de danger et il y a ");
+			System.out.print("\n--> Dans cette salle, il n'y a pas de danger, mais il y a ");
 		System.out.println(o.size()+" objet(s).");
 	}
 	
@@ -81,9 +84,9 @@ public class Piece {
 	{
 		if(o.size()>0)
 		{
-			System.out.println("Objet dans "+l.getName()+" :");
+			Main.println("--> Liste des objets dans "+l.getName()+" :\n");
 			int j=1;
-			System.out.println("0: ne rien faire.");
+			Main.println(" >> 0: ne rien faire.");
 			for(Objet ob: o)
 			{
 				System.out.println(j+": "+ob.getAction());
@@ -93,7 +96,7 @@ public class Piece {
 		}
 		else
 		{
-			System.out.println("   ---!!! Il n'y a rien à voir ici !!!---   ");
+			System.out.println("\n--> Il n'y a aucun objet dans cette pièce !\n");
 			return false;
 		}
 	}
@@ -141,11 +144,11 @@ public class Piece {
 	{
 		if(this.affAllIteminpiece())
 		{
-			System.out.println("Taper le numero de l'objet a voir ou utiliser.");
+			Main.print("\n--> Quel objet souhaitez vous prendre ?\n> ");
 			int choix=sc.nextInt();
 			if(choix>0&&choix-1<this.getNbObj())
 			{
-				System.out.println("Taper 1 pour activer l'objet ou 2 pour voire la description");
+				Main.print("--> Que souhaitez-vous faire ?\n >> 1: Activer l'objet\n >> 2: Inspecter l'objet\n\n> ");
 				int utilisation=sc.nextInt();
 				if(utilisation==1)
 				{
@@ -153,7 +156,7 @@ public class Piece {
 					this.suprObj(oTemp);
 					String s=oTemp.utliserObjet(p,n.getCarte(),n.getAllObjet());
 					if(s!=null)
-						System.out.println("Information: "+s);
+						Main.println("\n--> Description : \n"+s);
 				}
 				else if(utilisation==2)
 				{
@@ -177,11 +180,11 @@ public class Piece {
  				if(lieu!=null)
  					ret=new Piece(lieu,n.getAllObjet(),n.getDangers());
 					else
-						System.out.println("!!!! Une erreur est survenue !!!! Impossible de changer.");   
+						System.err.println("\n/!\\Erreur ! Impossible de changer de salle./!\\\n");   
 			 }
 			 else
 			 {
-				 System.out.println(" La porte est bloqué.");
+				 Main.println("\n--> La porte est bloquée ! Impossible de l'ouvrir.\n");
 			 }
 		}
 		return ret;
@@ -190,9 +193,12 @@ public class Piece {
 	public void choixInventaire(Scanner sc,Personnage p,Niveau n)
 	{
 		int choix;
-		System.out.println("Inventaire: ");
+		Main.println("#---------------#\n"+
+				     "|  INVENTAIRE   |\n"+
+			     	 "#---------------#\n");
+
 		p.afficherInventaire();
-		System.out.println("Taper le numero de l'objet à utiliser");
+		Main.println("--> Quel objet utiliser ?\n> ");
 		choix=sc.nextInt();
 		if(choix>0&&choix-1<p.getNbItemInventaire())
 		{
@@ -205,11 +211,11 @@ public class Piece {
 		try {
 			p.attaquer(this.getDanger());
 		} catch (DangerMeurtException e1) {
-			System.out.println("  --!! Vous avez battu un danger !!--  ");
+			System.out.println("\n--> Vous avez battu le danger "+d.getName()+" !\n"); 
 			n.removeDanger(this.suprDanger());
 			if(n.getNbDanger()==0)
 			{
-				System.out.println("------!!!!!! Bravo, vous avez battu tout les dangers !!!!!!------");
+				System.out.println("\n--> ");
 			}
 		}
 	}

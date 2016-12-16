@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import p.Main;
+
 /*
  * Dany CORBINEAU ; dany.corbineau@ynov.com
  * Classe Scenario: permet de lier un niveau avec un personnage et permet le déroulement du jeu
@@ -81,7 +83,7 @@ public class Scenario {
     		int choix;
     		boolean loop=true;
     		
-    		System.out.println("Vous avez choisi "+niveau.getName());// name
+    		Main.println("Vous avez choisi le niveau "+niveau.getName()+" !");// name
     		piece=new Piece(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
     		
     		
@@ -94,7 +96,10 @@ public class Scenario {
     				if(piece.existeDanger())
     					personnage.prendreDegats(piece.dangerAttaquer());
 				} catch (mortPersonnageException e) {
-					System.out.println(" ---!!! Vous avez perdu !!!--- ");
+					System.out.println("\n#-------------------#\n"+
+							   		   "|     GAME OVER     |\n"+
+							   		   "| Vous avez perdu ! |\n"+
+									   "#-------------------#\n");
 					loop=false;
 					continue;
 				}
@@ -133,11 +138,12 @@ public class Scenario {
         		catch(InputMismatchException e)
         		{
         			sc.nextLine();
-        			System.out.println("---!!!! Données invalides !!!!---");
+        			System.err.println("\n/!\\ Données invalides /!\\\n");
         		}
     		}
-    		System.out.println("La prtie est fini");
-    		
+    		Main.println("\n#--------------------#\n");
+    		System.out.println("--> Partie Terminée ! Bien joué à vous !");
+    		System.out.println("\n#--------------------#\n");
     	}
     }
     
