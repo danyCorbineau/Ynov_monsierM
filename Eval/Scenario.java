@@ -94,9 +94,9 @@ public class Scenario {
     					personnage.prendreDegats(piece.dangerAttaquer());
 				} catch (MortPersonnageException e) {
 					System.out.println("\n#-------------------#\n"+
-							   		   "|     GAME OVER     |\n"+
-							   		   "| Vous avez perdu ! |\n"+
-									   "#-------------------#\n");
+							   "|     GAME OVER     |\n"+
+							   "| Vous avez perdu ! |\n"+
+							   "#-------------------#\n");
 					boucle=false;
 					continue;
 				}
