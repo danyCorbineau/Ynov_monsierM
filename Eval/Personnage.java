@@ -79,20 +79,7 @@ public class Personnage {
     }
 
     
-/*
- * Charge un personnage une fois la partie lancé avec un niveau prédéfini.
- */
-    public void niveauPersonnage() {
-    }
-    
-
-    
-/*
- * Le personnage appele un objet.
- */
-    public void appelerObjet() {
-    }
-   
+    public String getNom() {return nom;}
     
 /*
  * Retourne les points de vie possédés par le personnage.    
@@ -153,27 +140,6 @@ public class Personnage {
         return nombreAleatoire;
     }
 
-
-/*
- * Le joueur se déplace sur la carte.    
- */
-    public void seDeplacer() {
-    }
-
-    
-/*
- * Le personnage inspecte un objet.
- */
-    public void inspecterObjet() {
-    }
-
-    
-
-/* 
- * Lorsqu'un personnage change de pièce..
- * 
- * 
- */
 
     
 /*
