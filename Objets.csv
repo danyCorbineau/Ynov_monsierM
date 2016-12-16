@@ -1,5 +1,5 @@
 Salon;PC portable;I;Un très bel ordinateur Master Race
 Chambre;interrupteur;C;porte dérobée
-Salle de bain;brosse à dents;O;Une simple brosse à dents, peu pratique pour se défendre contre les monstres
-Chambre;bannane;O;pas mure
-Entrée;pattate;I;azerty
+Salle de bain;brosse à dents;O;-10;Une simple brosse à dents, peu pratique pour se défendre contre les monstres
+Chambre;bannane;O;+10;pas mure
+Entrée;pattate;I;+20;azerty

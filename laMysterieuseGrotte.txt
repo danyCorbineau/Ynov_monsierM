@@ -1,5 +1,5 @@
 La mystérieuse grotte
-Grotte.txt
+carteGrotte.txt
 objetsGrotte.csv
 dangersGrotte.csv
 Vous incarnez un aventurier en excursion dans la jungle tropicale, lors de l'observation de lémuriens, un guépard surgit et se précipite dans votre direction.
