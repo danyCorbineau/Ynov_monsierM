@@ -3,6 +3,9 @@ package p;
 import java.util.List;
 import java.util.Scanner;
 
+//Dany Corbineau
+//Cette classe gère la salle, les objets, et les dangers intéragissant avec le joueur
+
 import p.Main;
 
 public class Piece {
@@ -10,6 +13,7 @@ public class Piece {
 	private Danger d=null;
 	private List<Objet> o;
 	
+	//Indique que le lieu dans lequel le joueur entre est visité, et invoque un danger (avec une probabilité de 50%)
 	public Piece(Lieu l,List<Objet> allObj, List<Danger> danger) {
 		
 		l.setVisite(true);
@@ -21,6 +25,7 @@ public class Piece {
 				d=danger.get((int)(Math.random()*danger.size()));
 	}
 	
+	//Affiche une liste d'interactions à l'utilisateur ( ce dernier entrera le numéro correspondant pour continuer)
 	public void afficherChoixUtilisateur()
 	{
 		Main.println("\n--> Que voulez-vous faire ?\n");
@@ -36,7 +41,7 @@ public class Piece {
 		Main.print("\n> ");
 	}
 	
-	
+	//Affiche dans la console des informations relatives à la salle dans laquelle le joueur se trouve
 	public void affDatapiece()
 	{
 		Main.println("\n--> Vous êtes dans la salle "+l.getNom()+".");
@@ -81,6 +86,7 @@ public class Piece {
 		return this.l.getPorteDestById(id);
 	}
 	
+	//Affiche dans la console la liste des objets présents dans la la salle actuelle
 	private boolean affToutItemDansPiece()
 	{
 		if(o.size()>0)
@@ -114,6 +120,7 @@ public class Piece {
 		return this.o.get(id);
 	}
 	
+	//retourne si une porte est verrouillée ou non
 	private boolean porteBloque(int idPorte)
 	{
 		return this.l.porteBloque(idPorte);
@@ -123,6 +130,8 @@ public class Piece {
 	{
 		this.o.remove(ob);
 	}
+	
+	//supprime un danger (lorsqu'il est éliminé)
 	private Danger suprDanger()
 	{
 		Danger da=d;
@@ -131,6 +140,7 @@ public class Piece {
 	}
 	
 	
+	//Regroupe les interactions disponibles pour les objets inspectés
 	public void choixInspecter(Scanner sc,Niveau n,Personnage p)
 	{
 		if(this.affToutItemDansPiece())
@@ -157,6 +167,7 @@ public class Piece {
 		}
 	}
 	
+	//Gère les changements de pièces, ainsi que les cas où la pièce n'existe pas (erreur), ou que la porte d'accès est verrouillée
 	public Piece choixChangerPiece(Scanner sc, Niveau n)
 	{
 		Piece ret=null;
@@ -181,6 +192,7 @@ public class Piece {
 		return ret;
 	}
 	
+	//Affiche les interactions disponibles avec les objets présents dans l'inventaire
 	public void choixInventaire(Scanner sc,Personnage p,Niveau n)
 	{
 		int choix;
@@ -196,7 +208,7 @@ public class Piece {
 			p.utiliserObjInventaire(choix-1, n.getCarte(), n.getToutObjet());
 		}
 	}
-	
+	//Permet d'attaquer un danger, et d'afficher un message dans le cas où le danger n'a plus de point de vie
 	public void choixAttaquerDanger(Personnage p,Niveau n)
 	{
 		try {
