@@ -32,7 +32,7 @@ public class Menu {
 	public void start()
 	{
 		Scanner sc=new Scanner(System.in);
-		boolean loop=true;
+		boolean boucle=true;
 		
 		System.out.println();
 		System.out.println("#--------------------------------------------------------------------------------------------------------------------------------#\n"+
@@ -46,7 +46,7 @@ public class Menu {
 						   "#--------------------------------------------------------------------------------------------------------------------------------#\n");
 		
 		
-		while(loop)
+		while(boucle)
 		{
 			if(!s.haveNiveau()){ Main.println("1 : Choisir un niveau"); }
 			if(!s.havePerso()){ Main.println("2 : Choisir un personnage"); }
@@ -86,7 +86,7 @@ public class Menu {
 						if(i<listePerso.size()&&i>=0)
 						{
 							s.setPersonnage(listePerso.get(i));
-							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(0)+" !\n");
+							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(i).getNom()+" !\n");
 						}
 						
 					} catch (FileNotFoundException e) {
@@ -99,13 +99,13 @@ public class Menu {
 						s.startSenario(sc);
 					}
 					else if(s.haveNiveau())
-						System.out.println("--- Il faut choisir un personnage. ---");
+						Main.println("--> Il faut d'abord choisir un personnage avant de jouer !\n");
 					else if(s.havePerso())
-						System.out.println("--- Il faut choisir un niveau. ---");
+						Main.println("--> Il faut d'abord choisir un niveau avant de jouer !\n");
 					else
-						System.out.println("--- Il faut choisir un personnage et un niveau. ---");
+						Main.println("--> Il faut d'abord choisir un personnage, ainsi qu'un niveau avant de jouer !\n");
 					break;
-				case 4: loop=false; break;
+				case 4: boucle=false; break;
 				}
 			}
 			catch(InputMismatchException e)
