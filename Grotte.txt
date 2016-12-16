@@ -1,0 +1,69 @@
+<
+"Entrée de la grotte"
+\
+L'entrée de la grotte est éclairée par d'étranges flammèches vertes incrustées dans des sphères cristallines. 
+Le boyau par lequel vous êtes entré, ponctué de lumières vertes à intervalles réguliers, sinue devant vous, limitant la visibilité.
+\
+"Avancer discrètement" "L’intérieur de la grotte"
+"Courez" "L’intérieur de la grotte"
+>
+<
+"Intérieur de la grotte"
+\
+Vous arrivez dans une section de la grotte totalement déserte. 
+Hormis quelques sphères lumineuses, plus abondantes ici, le seul élément particulier dans votre champ de vision 
+est une IMMENSE porte faite dans un matériau que vous ne connaissez pas. 
+Vous doutez de pouvoir ouvrir cette porte par la seule force de vos bras.
+\
+"Immense porte" "Entrée du bastion" 1
+>
+<
+"Entrée du bastion" 
+\
+Vous entrée dans un immense hall, à l’image de la porte qui le garde. 
+Contrairement aux salles que vous avez traversées, les parois de ce hall sont ouvragées, ornées de glyphes mystérieux et incompréhensible.
+\
+"Arcade de gauche" "Salle de gauche"
+"Arcade de droite" "Salle de droite"
+"Arcade centrale" "Couloir"
+>
+<
+"Salle de gauche"
+\
+Dans cette salle vous ne trouvez que d’étonnantes et bruyantes machines laissant s’échapper de la vapeur brûlante.
+\
+"Arcade de gauche" "Entrée du bastion"
+"Arcade de droite" "Couloir"
+>
+<
+"Salle de droite"
+\
+Vous trouvez dans cette salle, ce qui ressemble à un dortoir. 
+Les lits sont constitués d’un sommier métallique d’un alliage qui vous est inconnu et de ce qu’il reste d’un matelas de plumes. 
+Le dortoir vous semble inutilisé depuis très longtemps.
+\
+"Arcade de droite" "Entrée du bastion"
+"Arcade de gauche" "Couloir"
+>
+<
+"Couloir"
+\
+Le couloir est surplombé d’une verrière qui vous permets de contempler les merveilles produites par les anciens habitants de ces lieux.
+Leur technologie vous semble d’une intense complexité. Vous pouvez voir à travers cette verrière de nombreuses machines surdimensionnées, 
+de nombreux engrenages, toujours cette lumière verte omniprésente, et, vous n’en croyez pas vos yeux : la Vie, vous voyez au-dessus de votre tête voler des créatures mécaniques, 
+tels des oiseaux, de métaux et de plumes, au cœur brillant de flammes vertes.  
+Quand vous sortez de votre hébétude, vous remarquez que le couloir se clos par ce qui fut une porte métallique, surement très résistante, mais qui n’ai plus aujourd’hui qu’un tas de gravats éparses.
+\
+"Grande porte détruite" "Grande salle"
+"Arcade de droite" "Salle de gauche"
+"Arcade de gauche" "Salle de droite"
+"Arcade centrale" "Entrée du bastion"
+>
+<
+"Grande salle"
+\
+Les murs de cette salle d’une taille similaire à celle du hall sont bien plus ouvragés, richement ornées d’or, d’alliages et de pierres précieuses. 
+Cette salle ne dégagerait que de la grandeur et de la beauté si seulement les murs n’en étaient pas en parti fondu, encore fumant et rougie par la flamme. 
+Vous remarquez d’immenses chaînes brisées au milieu de la pièce. Le sol à cet endroit est couvert de griffures et de brulures.
+\
+"Porte détruite" "Couloir"
