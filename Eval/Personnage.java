@@ -7,9 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-/* JÈrÈmy NUNES
- * Cette classe dÈfinit des objets concernant les personnages.
- * Elle permet Ègalement de charger les personnages pour pouvoir jouer (ainsi que leur niveau, objets, stats,...)
+/* J√©r√©my NUNES
+ * Cette classe d√©finit des objets concernant les personnages.
+ * Elle permet √©galement de charger les personnages pour pouvoir jouer (ainsi que leur niveau, objets, stats,...)
  */
 
 public class Personnage {
@@ -25,8 +25,9 @@ public class Personnage {
     private Inventaire inventaire;
     
     
-/* Les objets Ètablis pour le personnage.
- * Les informations sont chargÈs ‡ partir du fichier "Personnages.csv".
+/*
+ * Les objets √©tablis pour le personnage.
+ * Les informations sont charg√©s √† partir du fichier "Personnages.csv".
  */
     public Personnage(String str) {
         
@@ -43,8 +44,9 @@ public class Personnage {
     }
     
     
-/* Charge le personnage dans le jeu aprËs avoir selectionnÈ le personnage interprÈtÈ.
- * Si jamais l'accËs au fichier des personnages (.csv) n'aboutit pas, la console affichera : "FileNotFoundException".
+/* 
+ * Charge le personnage dans le jeu apr√®s avoir selectionn√© le personnage interpr√©t√©.
+ * Si jamais l'acc√®s au fichier des personnages (.csv) n'aboutit pas, la console affichera : "FileNotFoundException".
  */
     public static void chargementP(String cP, List listPersonnage) throws FileNotFoundException {
 
@@ -66,27 +68,25 @@ public class Personnage {
 		}
     }
 
-    /*
-     * retourne le nom du personnage
-     */
+
+// Retourne le nom du personnage.
     public String getNom() {return nom;}
     
-/*
- * Retourne les points de vie possÈdÈs par le personnage.    
- */
+
+// Retourne les points de vie poss√©d√©s par le personnage.    
     public int pointsDeVie() {
     	return pointsDeVie;
     }
 
     
 /*
- * Un personnage reÁoit des dÈgats de la part d'un danger. Lors de ceci, il tire alÈatoirement une dÈfense allant de 0 jusqu'‡ son
- * nombre maximum de points de dÈfense, ceci soustrait aux points d'attaque du danger ennemi.
+ * Un personnage re√ßoit des d√©gats de la part d'un danger. Lors de ceci, il tire al√©atoirement une d√©fense allant de 0 jusqu'√† son
+ * nombre maximum de points de d√©fense, ceci soustrait aux points d'attaque du danger ennemi.
  * 
- * Si un personnage reÁoit moins de dÈgats qu'il possËde de dÈfense alors :
- * (Exemple : Le danger cause 10 de dÈgats, le personnage tire une dÈfense de 18) Alors les points de vie du personnage sont inchangÈs
+ * Si un personnage re√ßoit moins de d√©gats qu'il poss√®de de d√©fense alors :
+ * (Exemple : Le danger cause 10 de d√©gats, le personnage tire une d√©fense de 18) Alors les points de vie du personnage sont inchang√©s
  * 
- * Si les points de vie du personnage tombent ‡ 0 alors il meurt (liaison avec la classe "mortPersonnageException").     
+ * Si les points de vie du personnage tombent √† 0 alors il meurt (liaison avec la classe "mortPersonnageException").     
  */
     public void prendreDegats( int degatsDanger) throws MortPersonnageException {
     	int nombreAleatoire = (int)(Math.random() * ((niveauDeDefense) + 1));
@@ -101,93 +101,77 @@ public class Personnage {
     	int pdvPourCent = (pointsDeVie*100) / pointsDeVieMax;
     	
     	
-    	Main.println("\n--> Il reste ‡ "+nom+" "+pointsDeVie+"HP ("+pdvPourCent+"%).");
+    	Main.println("\n--> Il reste √† "+nom+" "+pointsDeVie+"HP ("+pdvPourCent+"%).");
     }
 
-    
-/*
- * Le personnage entame une action d'attaque.    
- */
+
+// Le personnage entame une action d'attaque.    
     public void attaquer(Danger d) throws DangerMeurtException {
     	d.perdPv(this.getDegatsAttaque());
     }
 
 
-/*
- * Le joueur tire une attaque alÈatoire allant de 0 jusqu'au nombre maximum de points d'attaque qu'il possËde.     
- */  
+// Le joueur tire une attaque al√©atoire allant de 0 jusqu'au nombre maximum de points d'attaque qu'il poss√®de.     
     public int getDegatsAttaque() {
     	int nombreAleatoire = (int)(Math.random() * ((niveauAttaque) + 1));
         return nombreAleatoire;
     }
 
     
-/*
- * Le joueur tire une dÈfense alÈatoire allant de 0 jusqu'au nombre maximum de points de dÈfense qu'il possËde.     
- */  
+// Le joueur tire une d√©fense al√©atoire allant de 0 jusqu'au nombre maximum de points de d√©fense qu'il poss√®de.     
     public int getNiveauDefense() {
     	int nombreAleatoire = (int)(Math.random() * ((niveauDeDefense) + 1));
         return nombreAleatoire;
     }
 
-
     
-/*
- * Permet d'Ècrire les caractÈristiques des diffÈrents personnages dans la console lors du choix de personnage dans le menu. 
- */
+// Permet d'√©crire les caract√©ristiques des diff√©rents personnages dans la console lors du choix de personnage dans le menu. 
     public void  description() {
-    	Main.println("Mon pseudo est "+nom+", je suis un "+profession+". Je possËde un total de "+pointsDeVie+
-    			"HP, une dÈfense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
-    			" et je peux porter jusqu'‡ "+capaciteDeTransport+" objets.");
+    	Main.println("Mon pseudo est "+nom+", je suis un "+profession+". Je poss√®de un total de "+pointsDeVie+
+    			"HP, une d√©fense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
+    			" et je peux porter jusqu'√† "+capaciteDeTransport+" objets.");
     }
     
     
-/*
- * Ajoute un objet ‡ l'inventaire du personnage.
- */
+// Ajoute un objet √† l'inventaire du personnage.
     public void addObjet(Objet test) {
     	inventaire.ajouterObjet(test);
     }
   
     
-/*
- * Supprime un objet de l'inventaire du personnage.
- */
+// Supprime un objet de l'inventaire du personnage.
     public void suprObjet(Objet test) {
     	inventaire.supprimerObjet(test);
     }
 
     
-/*
- * Affiche l'inventaire
- */
+// Affiche l'inventaire
     public void afficherInventaire() {
     	inventaire.afficherObjet();
     }
     
-    /**
-     * 
-     * @return nombre d'item dans l'inventaire
-     */
+	
+// Retourne le nombre d'items dans l'inventaire du personnage.
     public int getNbItemInventaire()
     {
     	return inventaire.getNbObjet();
     }
     
-    /**
-     *  Utilise un objet dÈfini par id
-     * @param id de l'objet
-     * @param c carte du niveau
-     * @param lo liste d'objet du niveau
-     */
+	
+/*
+ * G√®re les objets de l'inventaire :
+ * id : 	Utilise un objet d√©fini.
+ * this : 	Param√®tre l'ID de l'objet.
+ * c : 		Param√®tre la carte du niveau.
+ * lo : 	Param√®tre la liste d'objet du niveau.
+ */
 	public void utiliserObjInventaire(int id, Carte c, List<Objet> lo)
 	{
 		inventaire.utiliserObj(id, this, c, lo);
 	}
 	
-	/**
-	 * Permet d'ajouter des pv (utilisation de potion)
-	 */
+
+// Permet d'ajouter des PV au personnage (Par utilisation d'une potion).
 	public void ajoutPv(int pv)
 	{
 		String plusMoins="";
