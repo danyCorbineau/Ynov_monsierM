@@ -1,0 +1,10 @@
+La mystérieuse grotte
+Grotte.txt
+objetsGrotte.csv
+dangersGrotte.csv
+Vous incarnez un aventurier en excursion dans la jungle tropicale, lors de l'observation de lémuriens, un guépard surgit et se précipite dans votre direction.
+Vous devez fuir. Autour de vous on ne retrouve que des pics et une source d'eau, vous décidez donc de plonger.
+Une fois sous l'eau vous apercevez au loin une étrange lumière verte, alors même que vous discernez le cri du guépard au bord de la source vous vous dirigez vers cette lumière.
+C'est de plus en plus profond.. Finalement vous arrivez à en sortir.
+C'est alors que vous vous apercevez que vous êtes à l'intérieur d'un des pics qui se trouvait à l'extérieur, dans un lieu à l'accès restreint. Alors que vous vous relevez, vous entendez un hurlement bestial qui résonne contre les parois.
+Intrigué et épuisé vous décidez de vous lancer dans une nouvelle aventure au sein de cette mystérieuse grotte.
