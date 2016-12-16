@@ -34,7 +34,7 @@ public class Niveau {
     /**
      * charge tout les elements du niveau 
      * @param fileName nom du fichier du niveau moins .txt
-     * @throws FileNotFoundException exception si un fichier n'a pas été trouvé
+     * @throws FileNotFoundException exception si un fichier n'a pas Ã©tÃ© trouvÃ©
      */
     public void charger(String nomFichier) throws FileNotFoundException
     {
@@ -54,9 +54,10 @@ public class Niveau {
 		} catch (IOException e) {
 			
 		}
-    	System.out.println(nom+"\nDescription:	"+this.description+
-				"\n -- Ce Niveau contient "+carte.getSize()+" Salles, "+objets.size()+" Objets et "+dangers.size()+" Dangers.");
-    	
+    		Main.println("\n#--------------------#\n");
+    		Main.println("--> "+nom+"\n\n"+this.description);
+		Main.println("\n--> Ce niveau contient "+carte.getSize()+" Salles, "+objets.size()+" Objets et "+dangers.size()+" Dangers.\n");
+		Main.println("\n#--------------------#\n");
     	
     	try {
 			dis.close();
