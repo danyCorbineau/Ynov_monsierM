@@ -29,7 +29,7 @@ public class Menu {
 	/**
 	 * Lancement du jeu
 	 */
-	public void start()
+	public void lancer()
 	{
 		Scanner sc=new Scanner(System.in);
 		boolean boucle=true;
