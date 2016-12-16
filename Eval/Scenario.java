@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /*
  * Dany CORBINEAU ; dany.corbineau@ynov.com
- * Classe Scenario: permet de lier un niveau avec un personnage et permet le déroulement du jeu
+ * Classe Scenario: permet de lier un niveau avec un personnage et permet le dÃ©roulement du jeu
  */
 
 public class Scenario {
@@ -23,8 +23,8 @@ public class Scenario {
     }
     
     /**
-     * Donne une valeur au personnage du scénario
-     * @param p personnage qui sera utiliser dans le scénario
+     * Donne une valeur au personnage du scÃ©nario
+     * @param p personnage qui sera utiliser dans le scÃ©nario
      */
     public void donnerPersonnage(Personnage p)
     {
@@ -32,9 +32,9 @@ public class Scenario {
     }
     
     /**
-     * Danne un niveau au scénario
-     * @param levelName nom du fichier niveau à charger moins .txt
-     * @throws FileNotFoundException exception généré si un fichier est manquant
+     * Danne un niveau au scÃ©nario
+     * @param levelName nom du fichier niveau Ã  charger moins .txt
+     * @throws FileNotFoundException exception gÃ©nÃ©rÃ© si un fichier est manquant
      */
     public void donnerLevel(String levelName) throws FileNotFoundException
     {
@@ -43,8 +43,8 @@ public class Scenario {
     }
     
     /**
-     * Vérifie si ont peut lancer un senario
-     * @return true si un personnage et un niveau ont été chargé 
+     * VÃ©rifie si ont peut lancer un senario
+     * @return true si un personnage et un niveau ont Ã©tÃ© chargÃ© 
      */
     public boolean estValide()
     {
@@ -52,8 +52,8 @@ public class Scenario {
     }
     
     /**
-     * Vérifie si un niveau à été chargé
-     * @return true si un niveau est chargé
+     * VÃ©rifie si un niveau Ã  Ã©tÃ© chargÃ©
+     * @return true si un niveau est chargÃ©
      */
     public boolean aUnNiveau()
     {
@@ -61,8 +61,8 @@ public class Scenario {
     }
     
     /**
-     * Vérifie si un personnage à été chargé
-     * @return true si un personnage est chargé
+     * VÃ©rifie si un personnage Ã  Ã©tÃ© chargÃ©
+     * @return true si un personnage est chargÃ©
      */
     public boolean aUnPerso()
     {
@@ -109,10 +109,10 @@ public class Scenario {
         			
         			switch(choix)
         			{
-        			case 1: // inspecter pièce
+        			case 1: // inspecter piÃ¨ce
         				piece.choixInspecter(sc,niveau,personnage);
         				break;
-        			case 2: // changer pièce
+        			case 2: // changer piÃ¨ce
         				Piece pi=piece.choixChangerPiece(sc, niveau);
         				if(pi!=null)
         					this.piece=pi;
@@ -135,12 +135,13 @@ public class Scenario {
         		catch(InputMismatchException e)
         		{
         			sc.nextLine();
-        			System.err.println("\n/!\\ Données invalides /!\\\n");
+        			System.err.println("\n/!\\ DonnÃ©es invalides /!\\\n");
         		}
     		}
-    		Main.println("\n#--------------------#\n");
-    		System.out.println("--> Partie Terminée ! Bien joué à vous !");
-    		System.out.println("\n#--------------------#\n");
+		Main.println("\n#-------------------#\n"+
+    		 		   "|     GAME OVER     |\n"+
+				   "| Vous avez gagnÃ© ! |\n"+
+    				   "#-------------------#\n");
     	}
     }
     
