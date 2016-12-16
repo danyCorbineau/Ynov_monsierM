@@ -39,12 +39,12 @@ public class Piece {
 	
 	public void affDatapiece()
 	{
-		Main.println("\n--> Vous Ítes dans la salle "+l.getNom()+".");
+		Main.println("\n--> Vous √™tes dans la salle "+l.getNom()+".");
 		Main.println("--> Description : "+l.getDescription());
 		if(d!=null)
 			System.out.print("\n--> Dans cette salle, il y a 1 danger, ainsi que ");
 		else
-			System.out.print("\n--> Dans cette salle, il n'y a pas de danger, mais il y a ");
+			System.out.print("\n--> Dans cette salle, il n'y a pas de danger, et ");
 		System.out.println(o.size()+" objet(s).");
 	}
 	
@@ -97,7 +97,7 @@ public class Piece {
 		}
 		else
 		{
-			System.out.println("\n--> Il n'y a aucun objet dans cette piËce !\n");
+			System.out.println("\n--> Il n'y a aucun objet dans cette pi√®ce !\n");
 			return false;
 		}
 	}
@@ -175,7 +175,7 @@ public class Piece {
 			 }
 			 else
 			 {
-				 Main.println("\n--> La porte est bloquÈe ! Impossible de l'ouvrir.\n");
+				 Main.println("\n--> La porte est bloqu√©e ! Impossible de l'ouvrir.\n");
 			 }
 		}
 		return ret;
