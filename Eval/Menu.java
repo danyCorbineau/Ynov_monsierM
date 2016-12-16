@@ -99,11 +99,11 @@ public class Menu {
 						s.startSenario(sc);
 					}
 					else if(s.haveNiveau())
-						System.out.println("--- Il faut choisir un personnage. ---");
+						System.out.println("--> Il faut d'abord choisir un personnage avant de jouer !\n");
 					else if(s.havePerso())
-						System.out.println("--- Il faut choisir un niveau. ---");
+						System.out.println("--> Il faut d'abord choisir un niveau avant de jouer !\n");
 					else
-						System.out.println("--- Il faut choisir un personnage et un niveau. ---");
+						System.out.println("--> Il faut d'abord choisir un personnage, ainsi qu'un niveau avant de jouer !\n");
 					break;
 				case 4: loop=false; break;
 				}
