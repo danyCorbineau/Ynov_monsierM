@@ -77,7 +77,7 @@ public class Carte {
 	public boolean getTotalVisite() {
 		for(Lieu lieu : listLieux) {
 			if (!lieu.isVisite()) {
-				Main.println("\n--> Il reste a visiter "+lieu.getNom()+".");
+				Main.println("\n--> Il reste à visiter "+lieu.getNom()+".");
 				return false;
 			}
 		}
