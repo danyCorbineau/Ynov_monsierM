@@ -186,13 +186,20 @@ public class Personnage {
 	}
 	
 	/**
-	 * Permet d'ajouter des pv
+	 * Permet d'ajouter des pv (utilisation de potion)
 	 */
 	public void ajoutPv(int pv)
 	{
+		String plusMoins="";
+		if(pv>0)
+			plusMoins="+"+pv+").";
+		else
+			plusMoins=""+pv+").";
+		
 		this.pointsDeVie+=pv;
 		if(this.pointsDeVie>this.pointsDeVieMax)
 			this.pointsDeVie=this.pointsDeVieMax;
+		Main.println(" -- Vous avez "+this.pointsDeVie+" ("+plusMoins);
 	}
    
 }

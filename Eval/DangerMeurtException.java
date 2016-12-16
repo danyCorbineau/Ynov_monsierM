@@ -7,6 +7,11 @@ package p;
 public class DangerMeurtException extends Exception{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * constructeur de l'exception
 	 * @param d le danger qui n'a plus de pv
 	 */

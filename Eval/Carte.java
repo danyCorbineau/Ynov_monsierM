@@ -11,7 +11,6 @@ public class Carte {
 	
 	private String nom;
     private List<Lieu> listLieux= new ArrayList<>();
-    private boolean totalVisite = false;
 
     
     // Ce constructeur permet de charger un fichier carte.txt et d'en récupérer les informations.
@@ -71,15 +70,17 @@ public class Carte {
 		
 	}
     public boolean isTotalVisite() {
-		return totalVisite;
+		return getTotalVisite();
 	}
 
-	public boolean getTotalVisite(boolean totalVisite) {
+	public boolean getTotalVisite() {
 		for(Lieu lieu : listLieux) {
 			if (!lieu.isVisite()) {
+				Main.println("\n--> Il reste a visiter "+lieu.getNom()+".");
 				return false;
 			}
 		}
+		Main.print("--> Vous avez tout visité.");
 		return true;
 	}
 
@@ -99,7 +100,7 @@ public class Carte {
     {
     	for(Lieu l: this.listLieux)
     	{
-    		if(l.getName().compareTo(name)==0)
+    		if(l.getNom().compareTo(name)==0)
     			return l;
     	}
     	return null;

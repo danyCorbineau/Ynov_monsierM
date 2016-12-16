@@ -36,15 +36,15 @@ public class Niveau {
      * @param fileName nom du fichier du niveau moins .txt
      * @throws FileNotFoundException exception si un fichier n'a pas été trouvé
      */
-    public void charger(String fileName) throws FileNotFoundException
+    public void charger(String nomFichier) throws FileNotFoundException
     {
-    	DataInputStream dis = new DataInputStream(new FileInputStream(new File(fileName)));
+    	DataInputStream dis = new DataInputStream(new FileInputStream(new File(nomFichier)));
     	
     	try {
 			nom=dis.readLine();
 			carte=new Carte(dis.readLine());
 			objets=Objet.csvToArrayList(dis.readLine());
-			dangers=Danger.loadDangers(dis.readLine(), dangers);
+			dangers=Danger.chargerDangers(dis.readLine(), dangers);
 	    	
 	    	description="";
 	    	String s;
@@ -67,7 +67,7 @@ public class Niveau {
     	
     }
     
-    public String getName()
+    public String getNom()
     {
     	return this.nom;
     }
@@ -77,12 +77,12 @@ public class Niveau {
     	return this.dangers.size();
     }
     
-    public boolean allVisited()
+    public boolean estToutVisite()
     {
     	return carte.isTotalVisite();
     }
     
-    public Lieu getFirstLieu()
+    public Lieu getLieuDepart()
     {
     	return carte.getPremierLieux();
     }
@@ -92,17 +92,17 @@ public class Niveau {
     	return this.dangers;
     }
     
-    public List<Objet> getAllObjet()
+    public List<Objet> getToutObjet()
     {
     	return this.objets;
     }
     
-    public void removeDanger(Danger d)
+    public void suprDanger(Danger d)
     {
     	this.dangers.remove(d);
     }
     
-    public Lieu getLieuByName(String name)
+    public Lieu getLieuParNom(String name)
     {
     	return carte.getLieuByName(name);
     }

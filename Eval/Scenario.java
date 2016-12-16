@@ -3,10 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import p.Main;
-
 /*
  * Dany CORBINEAU ; dany.corbineau@ynov.com
  * Classe Scenario: permet de lier un niveau avec un personnage et permet le déroulement du jeu
@@ -83,13 +79,14 @@ public class Scenario {
     		int choix;
     		boolean boucle=true;
     		
-    		Main.println("Vous avez choisi le niveau "+niveau.getName()+" !");// name
-    		piece=new Piece(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
+    		Main.println("Vous avez choisi le niveau "+niveau.getNom()+" !");// name
+    		piece=new Piece(niveau.getLieuDepart(),niveau.getToutObjet(),niveau.getDangers());
     		
     		
     		
-    		while( (!niveau.allVisited() || niveau.getNbDanger()>0) && boucle)
+    		while( (!niveau.estToutVisite() || niveau.getNbDanger()>0) && boucle)
     		{
+    			Main.println("--> Il reste "+niveau.getNbDanger()+" danger(s).");
     			piece.affDatapiece();
     			
     			try {

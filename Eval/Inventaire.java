@@ -41,9 +41,9 @@ public class Inventaire {
  */
 	public void afficherObjet() {
 		int j=1;
-		System.out.println("--- 0: Ne rien faire");
+		Main.println(" >> 0: Ne rien faire");
 		for(Objet anItem : objets) {
-			System.out.println("--- "+j+": "+anItem.getAction()); 
+			Main.println(" >> "+j+": "+anItem.getAction()); 
 			j++;
 		}
 		
@@ -56,7 +56,7 @@ public class Inventaire {
 	
 	public void utiliserObj(int id, Personnage p, Carte c, List<Objet> lo)
 	{
-		this.objets.get(id).utliserObjet(p, c, lo);
+		((Utilisable)this.objets.get(id)).utiliserEffet(p);
 		this.objets.remove(id);
 	}
 	

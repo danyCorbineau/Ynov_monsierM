@@ -7,28 +7,28 @@ import java.util.List;
 
 public class ClePorteSecrete extends Objet {
 
-    protected String newpieceName;
-    protected String accessType;
+    protected String nouveauNomPiece;
+    protected String typeAccess;
     int cleId;
     
     //Constructeur pour definir un objet qui ouvre un passage secret
-    public ClePorteSecrete(String itempiece, String name, String accessType,int id) {
-    	this.itempiece = itempiece;
+    public ClePorteSecrete(String itemRoom, String name, String accessType,int id) {
+    	this.itemPiece = itemRoom;
     	this.name = name;
-    	this.accessType = accessType;
+    	this.typeAccess = accessType;
     	this.cleId=id;
     }
     
     
     //voir dans Objet
     public String getAction(){
-    	return (name+", ouvre la porte "+accessType+"."+description+".");
+    	return ("\n--> L'objet "+name+", ouvre la porte "+typeAccess+" vers "+typeAccess +".");
     }
 
     
     /*Méthode pour créer un nouveau passage, non terminé, il faut faire le lien avec la partie de Nicolas
-    *void addNewpiece(String newpieceName, String accessType) {
-    *	new Porte(this.newpieceName, this.accessType);
+    *void addNewRoom(String newRoomName, String accessType) {
+    *	new Porte(this.newRoomName, this.accessType);
     }
 	*/
 
@@ -37,7 +37,7 @@ public class ClePorteSecrete extends Objet {
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
 		listObj.remove(this);
 		c.debloquerPorte(this.cleId);
-		System.out.println("Porte avec clée"+ cleId +"débloqué.");
+		System.out.println("\n--> La Porte a été débloquée avec la clé "+ cleId +".\n");
 		return null;
 	}
 

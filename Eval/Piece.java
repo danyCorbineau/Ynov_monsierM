@@ -39,7 +39,7 @@ public class Piece {
 	
 	public void affDatapiece()
 	{
-		Main.println("\n--> Vous êtes dans la salle "+l.getName()+".");
+		Main.println("\n--> Vous êtes dans la salle "+l.getNom()+".");
 		if(d!=null)
 			System.out.print("\n--> Dans cette salle, il y a 1 danger, ainsi que ");
 		else
@@ -72,19 +72,19 @@ public class Piece {
 	}
 	private int getNbPorte()
 	{
-		return l.getNbPort();
+		return l.getNbPorte();
 	}
 	
 	private String getPorteDestById(int id)
 	{
-		return this.l.getPortDestById(id);
+		return this.l.getPorteDestById(id);
 	}
 	
 	private boolean affToutItemDansPiece()
 	{
 		if(o.size()>0)
 		{
-			Main.println("--> Liste des objets dans "+l.getName()+" :\n");
+			Main.println("--> Liste des objets dans "+l.getNom()+" :\n");
 			int j=1;
 			Main.println(" >> 0: ne rien faire.");
 			for(Objet ob: o)
@@ -144,7 +144,7 @@ public class Piece {
 				{
 					Objet oTemp=this.getObj(choix-1);
 					this.suprObj(oTemp);
-					String s=oTemp.utliserObjet(p,n.getCarte(),n.getAllObjet());
+					String s=oTemp.utliserObjet(p,n.getCarte(),n.getToutObjet());
 					if(s!=null)
 						Main.println("\n--> Description : \n"+s);
 				}
@@ -166,9 +166,9 @@ public class Piece {
 			 if(!this.porteBloque(choix-1))
 			 {
 				 System.out.println("change vers: "+this.getPorteDestById(choix-1));
-				 Lieu lieu=n.getLieuByName(this.getPorteDestById(choix-1));
+				 Lieu lieu=n.getLieuParNom(this.getPorteDestById(choix-1));
  				if(lieu!=null)
- 					ret=new Piece(lieu,n.getAllObjet(),n.getDangers());
+ 					ret=new Piece(lieu,n.getToutObjet(),n.getDangers());
 					else
 						System.err.println("\n/!\\Erreur ! Impossible de changer de salle./!\\\n");   
 			 }
@@ -192,7 +192,7 @@ public class Piece {
 		choix=sc.nextInt();
 		if(choix>0&&choix-1<p.getNbItemInventaire())
 		{
-			p.utiliserObjInventaire(choix-1, n.getCarte(), n.getAllObjet());
+			p.utiliserObjInventaire(choix-1, n.getCarte(), n.getToutObjet());
 		}
 	}
 	
@@ -202,7 +202,7 @@ public class Piece {
 			p.attaquer(this.getDanger());
 		} catch (DangerMeurtException e1) {
 			System.out.println("\n--> Vous avez battu le danger "+d.getName()+" !\n"); 
-			n.removeDanger(this.suprDanger());
+			n.suprDanger(this.suprDanger());
 			if(n.getNbDanger()==0)
 			{
 				System.out.println("\n--> ");

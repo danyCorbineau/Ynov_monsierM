@@ -19,7 +19,7 @@ public class Utilisable extends Objet {
    
     //voir dans Objet
     public String getAction() {
-    	return (name+", "+itemTaille+" places dans l'inventaire.\n"+description+".");
+    	return (name);
     }
     
     
@@ -33,7 +33,7 @@ public class Utilisable extends Objet {
      */
 	@Override
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
-		System.out.println("\n--> Vous placer dans l'inventaire "+this.getName()+" !");
+		System.out.println("\n--> Vous placer dans l'inventaire "+this.getNom()+" !");
 		listObj.remove(this);
 		p.addObjet(this);
 		return null;
