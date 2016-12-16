@@ -69,7 +69,6 @@ public class Lieu {
     			this.listPortes.add(new Porte(str[1],str[3]));
         		if(str.length>4)
         		{
-        			System.out.println("add key to "+str[1]+" "+Integer.valueOf(str[4].split(" ")[1]));
         			this.listPortes.get(this.listPortes.size()-1).setKey(Integer.valueOf(str[4].split(" ")[1]));
         		}
     		}

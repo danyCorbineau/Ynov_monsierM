@@ -8,8 +8,8 @@ import java.util.List;
 public class Utilisable extends Objet {
 
 	//Constructeur pour definir un objet avec lequel on peut interagir, stocker dans l'inventaire
-    public Utilisable(String itemRoom, String name, String description, int itemSize) {
-    	this.itemRoom = itemRoom;
+    public Utilisable(String itempiece, String name, String description, int itemSize) {
+    	this.itempiece = itempiece;
     	this.name = name;
     	this.description = description;
     	this.itemSize = itemSize;
@@ -22,9 +22,11 @@ public class Utilisable extends Objet {
 
 	@Override
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
-		System.out.println("----Vous utiliser "+this.getName());
-		listObj.remove(this);
-		p.addObjet(this);
+		if(p.peutPorterDautreObjet())
+		{
+			listObj.remove(this);
+			p.addObjet(this);
+		}
 		return null;
 	}
 

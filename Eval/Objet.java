@@ -10,7 +10,7 @@ import java.io.*;
 public abstract class Objet {
 
     protected String name;
-    protected String itemRoom;
+    protected String itempiece;
     protected String description;
     protected int itemSize;
 
@@ -32,9 +32,9 @@ public abstract class Objet {
     	return listeResult;
     }
     
-    public String getNameRoom()
+    public String getNamepiece()
     {
-    	return this.itemRoom;
+    	return this.itempiece;
     }
     
     
@@ -64,12 +64,12 @@ public abstract class Objet {
     
     
     //Transmet les objets presents dans une salle précise donnee en parametre
-    public static List<Objet> getItemsInRoom(Lieu room,List<Objet> l) {
+    public static List<Objet> getItemsInpiece(Lieu piece,List<Objet> l) {
     	List<Objet> lo=new ArrayList<>();
     	int c=0;
     	for(Objet o: l)
     	{
-    		if(o.getNameRoom().compareTo(room.getName())==0)
+    		if(o.getNamepiece().compareTo(piece.getName())==0)
     			lo.add(o);
     	}
     	return lo;

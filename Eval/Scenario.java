@@ -14,7 +14,7 @@ public class Scenario {
 	private Niveau niveau;
     private Personnage personnage;
     
-    Room room;
+    private Piece piece;
     
     /**
      * Constructeur qui initialise
@@ -82,36 +82,23 @@ public class Scenario {
     		boolean loop=true;
     		
     		System.out.println("Vous avez choisi "+niveau.getName());// name
-    		room=new Room(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
+    		piece=new Piece(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
     		
     		
     		
     		while( (!niveau.allVisited() || niveau.getNbDanger()>0) && loop)
     		{
-    			room.affDataRoom();
+    			piece.affDatapiece();
     			
     			try {
-    				if(room.haveDanger())
-    					personnage.prendreDegats(room.dangerAttaquer());
+    				if(piece.existeDanger())
+    					personnage.prendreDegats(piece.dangerAttaquer());
 				} catch (mortPersonnageException e) {
 					System.out.println(" ---!!! Vous avez perdu !!!--- ");
 					loop=false;
 					continue;
 				}
-    			
-    			System.out.println("Que voulez vous faire ?");
-    			
-    			System.out.println("  --1: Inspecter");
-    			System.out.println("  --2: Changer de salle");
-    			System.out.println("  --3: Ouvrir l'inventaire");
-    			if(room.haveDanger())
-    			{
-    				System.out.println("  --4: Inspecter le danger");
-        			System.out.println("  --5: Attaquer le danger");
-    			}
-    			
-    			
-    			
+    			piece.afficherChoixUtilisateur();
     			try
         		{
         			choix=sc.nextInt();
@@ -120,74 +107,23 @@ public class Scenario {
         			
         			switch(choix)
         			{
-        			case 1:
-        				if(room.affAllIteminRoom())
-        				{
-        					System.out.println("Taper le numero de l'objet a voir ou utiliser.");
-            				choix=sc.nextInt();
-            				if(choix>0&&choix-1<room.getNbObj())
-            				{
-            					System.out.println("Taper 1 pour activer l'objet ou 2 pour voire la description");
-            					int utilisation=sc.nextInt();
-            					if(utilisation==1)
-            					{
-            						Objet oTemp=room.getObj(choix-1);
-            						room.suprObj(oTemp);
-            						String s=oTemp.utliserObjet(personnage,niveau.getCarte(),niveau.getAllObjet());
-            						if(s!=null)
-            							System.out.println("Information: "+s);
-            					}
-            					else if(utilisation==2)
-            					{
-            						room.affObjet(choix-1);
-            					}
-            				}
-        				}
+        			case 1: // inspecter pièce
+        				piece.choixInspecter(sc,niveau,personnage);
         				break;
-        			case 2: 
-        				room.describeRoom();
-        				choix=sc.nextInt();
-        				if(choix>0 && choix-1<room.getNbPort())
-        				{
-        					 if(!room.portBloque(choix-1))
-        					 {
-        						 System.out.println("change vers: "+room.getPortDestById(choix-1));
-        						 Lieu lieu=niveau.getLieuByName(room.getPortDestById(choix-1));
-                 				if(lieu!=null)
-                 					room=new Room(lieu,niveau.getAllObjet(),niveau.getDangers());
-                					else
-                						System.out.println("!!!! Une erreur est survenue !!!! Impossible de changer.");   
-        					 }
-        					 else
-        					 {
-        						 System.out.println(" La porte est bloqué.");
-        					 }
-        				}
+        			case 2: // changer pièce
+        				Piece pi=piece.choixChangerPiece(sc, niveau);
+        				if(pi!=null)
+        					this.piece=pi;
         				break;
-        			case 3:
-        				System.out.println("Inventaire: ");
-        				personnage.afficherInventaire();
-        				System.out.println("Taper le numero de l'objet à utiliser");
-        				choix=sc.nextInt();
-        				if(choix>0&&choix-1<personnage.getNbItemInventaire())
-        				{
-        					personnage.utiliserObjInventaire(choix-1, niveau.getCarte(), niveau.getAllObjet());
-        				}
-        				
+        			case 3: // inventaie
+        				piece.choixInventaire(sc, personnage, niveau);
         				break;
-        			case 4: room.affDanger(); break;
-        			case 5: 
-        				try {
-							personnage.attaquer(room.getDanger());
-						} catch (DangerMeurtException e1) {
-							System.out.println("  --!! Vous avez battu un danger !!--  ");
-							niveau.removeDanger(room.suprDanger());
-							if(niveau.getNbDanger()==0)
-							{
-								System.out.println("------!!!!!! Bravo, vous avez battu tout les dangers !!!!!!------");
-							}
-							
-						}
+        			case 4: if(piece.existeDanger()){piece.affDanger();} break; // afficher danger stats
+        			case 5: // attaquer un danger
+        				if(piece.existeDanger())
+        				{
+        					piece.choixAttaquerDanger(personnage, niveau);
+        				}
         				break;
         			}
         			

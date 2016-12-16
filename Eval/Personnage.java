@@ -217,6 +217,11 @@ public class Personnage {
 	{
 		inventaire.utiliserObj(id, this, c, lo);
 	}
+	
+	public boolean peutPorterDautreObjet()
+	{
+		return inventaire.getNbObjet()<this.capaciteDeTransport;
+	}
 
    
 }
