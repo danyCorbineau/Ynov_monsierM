@@ -18,7 +18,7 @@ public class Main {
 	{
 		System.out.print(s);
 		try {
-			Thread.sleep(100);
+			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

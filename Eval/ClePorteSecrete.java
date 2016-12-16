@@ -22,7 +22,7 @@ public class ClePorteSecrete extends Objet {
     
     //voir dans Objet
     public String getAction(){
-    	return ("\n--> L'objet "+name+", ouvre la porte "+typeAccess+" vers "+typeAccess +".");
+    	return (""+name+", ouvre la porte "+typeAccess+".");
     }
 
     

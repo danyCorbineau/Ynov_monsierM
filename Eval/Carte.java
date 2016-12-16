@@ -80,7 +80,7 @@ public class Carte {
 				return false;
 			}
 		}
-		Main.print("--> Vous avez tout visité.");
+		Main.println("--> Vous avez tout visité.");
 		return true;
 	}
 

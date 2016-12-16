@@ -89,7 +89,10 @@ public class Lieu {
     {
     	return this.listPortes.get(idPorte).estBloque();
     }
-    
+    public String getDescription()
+    {
+    	return this.description;
+    }
     
     
     

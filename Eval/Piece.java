@@ -40,6 +40,7 @@ public class Piece {
 	public void affDatapiece()
 	{
 		Main.println("\n--> Vous êtes dans la salle "+l.getNom()+".");
+		Main.println("--> Description : "+l.getDescription());
 		if(d!=null)
 			System.out.print("\n--> Dans cette salle, il y a 1 danger, ainsi que ");
 		else
