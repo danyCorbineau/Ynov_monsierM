@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Nicolas Durand et Dany Corbineau
  */
 public class Lieu {
 	
@@ -13,23 +13,23 @@ public class Lieu {
 	protected String description;
 	protected boolean visite = false;
 	
-	
+	//Constructeur pour créer un Lieu, utilisé par Carte
     public Lieu(String nom, String description) {
     	this.nom = nom;
     	this.description = description;
     }
-	
+	//Booléen qui se vérifie si le Lieu est visité
     public boolean isVisite() {
 		return visite;
 	}
-
+	//setter du booléen : visité
 	public void setVisite(boolean visite) {
 		this.visite = visite;
 	}
 
-
+	//Méthode permétant d'afficher les variables d'un Lieu sous une forme plus estéthique.
     public void seDecrire() {
-    	System.out.println("\n--> Vous �tes dans "+nom+".\n"+description+"\nCette pi�ce poss�de "+listPortes.size()+" portes.\n");
+    	System.out.println("\n--> Vous êtes dans "+nom+".\n"+description+"\nCette pièce possède "+listPortes.size()+" portes.\n");
     	int j=1;
     	System.out.println(" >> "+0+": ne rien faire.");
     	for(Porte p: listPortes)
@@ -40,11 +40,13 @@ public class Lieu {
     	}
     	
     }
+	
+	//Getter de nom.
     public String getNom()
     {
     	return this.nom;
     }
-    
+    //Méthode servant à charger les portes, étonnamment.
     public void chargerPorte(String[] portes)
     { 
     	for(String s: portes)
@@ -63,17 +65,18 @@ public class Lieu {
     		
     	}
     }
-    
+    //Bon c'est évident ça aussi
     public int getNbPorte()
     {
     	return this.listPortes.size();
     }
-    
+    // Pareil
     public String getPorteDestById(int id)
     {
     	return this.listPortes.get(id).getDestination();
     }
     
+	//Méthode débloquant la porte demandée
     public void debloquerPorte(int clePorte)
     {
     	for(Porte p: this.listPortes)
@@ -85,6 +88,7 @@ public class Lieu {
     	}
     }
     
+	//Booléen traduisant l'état de la porte (bloquée ou non)
     public boolean porteBloque(int idPorte)
     {
     	return this.listPortes.get(idPorte).estBloque();
