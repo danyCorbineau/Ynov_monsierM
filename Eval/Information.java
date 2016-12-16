@@ -21,7 +21,6 @@ public class Information extends Objet {
 
 	@Override
 	public String utliserObjet(Personnage p,Carte c,List<Objet> listObj) {
-		listObj.remove(this);
 		return description;
 	}
 

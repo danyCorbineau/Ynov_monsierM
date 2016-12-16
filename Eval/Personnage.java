@@ -207,5 +207,16 @@ public class Personnage {
     public void afficherInventaire() {
     	inventaire.afficherObjet();
     }
+    
+    public int getNbItemInventaire()
+    {
+    	return inventaire.getNbObjet();
+    }
+    
+	public void utiliserObjInventaire(int id, Carte c, List<Objet> lo)
+	{
+		inventaire.utiliserObj(id, this, c, lo);
+	}
+
    
 }

@@ -49,8 +49,11 @@ public class Danger {
     {
     	System.out.println(this.nom+" se fait démonter.");
     	this.pv-=pv;
-    	if(pv<=0)
+    	if(this.pv<=0)
+    	{
     		throw new DangerMeurtException(this);
+    	}
+    	
     	System.out.println("Il reste à "+this.nom+" "+this.pv+" HP");
     }
     

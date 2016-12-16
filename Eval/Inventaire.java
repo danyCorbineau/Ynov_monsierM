@@ -48,5 +48,16 @@ public class Inventaire {
 		}
 		
 	}
-	 
+	
+	public int getNbObjet()
+	{
+		return this.objets.size();
+	}
+	
+	public void utiliserObj(int id, Personnage p, Carte c, List<Objet> lo)
+	{
+		this.objets.get(id).utliserObjet(p, c, lo);
+		this.objets.remove(id);
+	}
+	
 }

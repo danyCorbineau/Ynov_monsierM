@@ -110,5 +110,15 @@ public class Room{
 		}
 	}
 	
+	public void suprObj(Objet ob)
+	{
+		this.o.remove(ob);
+	}
+	public Danger suprDanger()
+	{
+		Danger da=d;
+		d=null;
+		return da;
+	}
 	
 }

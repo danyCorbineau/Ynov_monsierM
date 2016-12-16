@@ -22,6 +22,7 @@ public class Utilisable extends Objet {
 
 	@Override
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
+		System.out.println("----Vous utiliser "+this.getName());
 		listObj.remove(this);
 		p.addObjet(this);
 		return null;

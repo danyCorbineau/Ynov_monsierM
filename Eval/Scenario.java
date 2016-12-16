@@ -131,7 +131,10 @@ public class Scenario {
             					if(utilisation==1)
             					{
             						Objet oTemp=room.getObj(choix-1);
+            						room.suprObj(oTemp);
             						String s=oTemp.utliserObjet(personnage,niveau.getCarte(),niveau.getAllObjet());
+            						if(s!=null)
+            							System.out.println("Information: "+s);
             					}
             					else if(utilisation==2)
             					{
@@ -163,6 +166,12 @@ public class Scenario {
         			case 3:
         				System.out.println("Inventaire: ");
         				personnage.afficherInventaire();
+        				System.out.println("Taper le numero de l'objet à utiliser");
+        				choix=sc.nextInt();
+        				if(choix>0&&choix-1<personnage.getNbItemInventaire())
+        				{
+        					personnage.utiliserObjInventaire(choix-1, niveau.getCarte(), niveau.getAllObjet());
+        				}
         				
         				break;
         			case 4: room.affDanger(); break;
@@ -190,6 +199,8 @@ public class Scenario {
         			System.out.println("---!!!! Données invalides !!!!---");
         		}
     		}
+    		System.out.println("La prtie est fini");
+    		
     	}
     }
     
