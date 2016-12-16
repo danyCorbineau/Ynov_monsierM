@@ -1,21 +1,16 @@
 package p;
-import java.util.*;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
  */
 public class Lieu {
 	
-	// lieu visité ? (boolean + get set)
 	
 	protected List<Porte> listPortes= new ArrayList<>();
-
 	protected String nom;
-
 	protected String description;
-
 	protected boolean visite = false;
 	
 	
@@ -23,21 +18,14 @@ public class Lieu {
     	this.nom = nom;
     	this.description = description;
     }
-
 	
     public boolean isVisite() {
 		return visite;
 	}
 
-
 	public void setVisite(boolean visite) {
 		this.visite = visite;
 	}
-
-
-	void explorer() {
-// Penser à la liaison de portes
-    }
 
 
     public void seDecrire() {
@@ -47,12 +35,12 @@ public class Lieu {
     	for(Porte p: listPortes)
     	{
     		System.out.print(" >> "+j+": ");
-    		p.describe();
+    		p.decrire();
     		j++;
     	}
     	
     }
-    public String getName()
+    public String getNom()
     {
     	return this.nom;
     }
@@ -69,28 +57,28 @@ public class Lieu {
     			this.listPortes.add(new Porte(str[1],str[3]));
         		if(str.length>4)
         		{
-        			this.listPortes.get(this.listPortes.size()-1).setKey(Integer.valueOf(str[4].split(" ")[1]));
+        			this.listPortes.get(this.listPortes.size()-1).setCle(Integer.valueOf(str[4].split(" ")[1]));
         		}
     		}
     		
     	}
     }
     
-    public int getNbPort()
+    public int getNbPorte()
     {
     	return this.listPortes.size();
     }
     
-    public String getPortDestById(int id)
+    public String getPorteDestById(int id)
     {
-    	return this.listPortes.get(id).getDest();
+    	return this.listPortes.get(id).getDestination();
     }
     
     public void debloquerPorte(int clePorte)
     {
     	for(Porte p: this.listPortes)
     	{
-    		if(p.getKeyId()==clePorte)
+    		if(p.getCleId()==clePorte)
     		{
     			p.setBloque(false);
     		}
@@ -99,7 +87,7 @@ public class Lieu {
     
     public boolean porteBloque(int idPorte)
     {
-    	return this.listPortes.get(idPorte).isBloque();
+    	return this.listPortes.get(idPorte).estBloque();
     }
     
     

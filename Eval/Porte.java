@@ -1,21 +1,18 @@
 package p;
-import java.util.*;
 
-
-
-	//Cette classe permet d'instancier les portes (et autres acces) que l'on va lier à des lieux précis dans la classe Lieu.
+//Cette classe permet d'instancier les portes (et autres acces) que l'on va lier à des lieux précis dans la classe Lieu.
 
 public class Porte {
 	private String nom;
-    private String lieuAr;
+    private String lieuArrive;
     private int key=0;
     
     public Porte(String nom, String lieuAr) {
     	this.nom = nom;
-    	this.lieuAr = lieuAr;
+    	this.lieuArrive = lieuAr;
     }
     
-    public void setKey(int k)
+    public void setCle(int k)
     {
     	this.key=k;
     }
@@ -30,23 +27,23 @@ public class Porte {
 	}
 
 
-	public String getLieuAr() {
-		return lieuAr;
+	public String getLieuArrive() {
+		return lieuArrive;
 	}
 
-	public void setLieuAr(String lieuAr) {
-		this.lieuAr = lieuAr;
+	public void setLieuArrive(String lieuAr) {
+		this.lieuArrive = lieuAr;
 	}
 	
-	public void describe()
+	public void decrire()
 	{
 		if (key == 0)
-		System.out.println(nom+" vers "+lieuAr);
+		System.out.println(nom+" vers "+lieuArrive);
 		else
-		System.out.println(nom+" vers "+lieuAr+ ", Clé : "+ key);
+		System.out.println(nom+" vers "+lieuArrive+ ", Clé : "+ key);
 	}
 
-	public boolean isBloque() {
+	public boolean estBloque() {
 		return key!=0;
 	}
 
@@ -55,12 +52,12 @@ public class Porte {
 			key=0;
 	}
 	
-	public String getDest()
+	public String getDestination()
 	{
-		return lieuAr;
+		return lieuArrive;
 	}
 	
-	public int getKeyId()
+	public int getCleId()
 	{
 		return this.key;
 	}

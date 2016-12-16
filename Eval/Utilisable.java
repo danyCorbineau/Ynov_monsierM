@@ -6,23 +6,34 @@ import java.util.List;
 //Classe pour les objets utilisables, que l'on peut mettre dans l'inventaire
 
 public class Utilisable extends Objet {
+	int pvAjout=0;
 
 	//Constructeur pour definir un objet avec lequel on peut interagir, stocker dans l'inventaire
-    public Utilisable(String itemRoom, String name, String description, int itemSize) {
-    	this.itemRoom = itemRoom;
+    public Utilisable(String itemPiece, String name, String description, int itemTaille,String pvAjout) {
+    	this.itemPiece = itemPiece;
     	this.name = name;
     	this.description = description;
-    	this.itemSize = itemSize;
+    	this.itemTaille = itemTaille;
+    	this.pvAjout=Integer.valueOf(pvAjout);
     }
    
     //voir dans Objet
     public String getAction() {
-    	return (name+", "+itemSize+" places dans l'inventaire.\n"+description+".");
+    	return (name);
+    }
+    
+    
+    public void utiliserEffet(Personnage p)
+    {
+    	p.ajoutPv(pvAjout);
     }
 
+    /**
+     * Méthode qui met dans l'inventaire un objet utilisable
+     */
 	@Override
 	public String utliserObjet(Personnage p, Carte c,List<Objet> listObj) {
-		System.out.println("\n--> Vous utilisez l'objet "+this.getName()+" !");
+		System.out.println("\n--> Vous placer dans l'inventaire "+this.getNom()+" !");
 		listObj.remove(this);
 		p.addObjet(this);
 		return null;

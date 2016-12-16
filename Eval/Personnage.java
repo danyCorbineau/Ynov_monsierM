@@ -16,19 +16,12 @@ public class Personnage {
 	
 
     private String nom;
-
     private String profession;
-
     private int pointsDeVie;
-    
     private int pointsDeVieMax;
-
     private int niveauDeDefense;
-
     private int niveauAttaque;
-
     private int capaciteDeTransport;
-    
     private Inventaire inventaire;
     
     
@@ -56,29 +49,26 @@ public class Personnage {
     public static void chargementP(String cP, List listPersonnage) throws FileNotFoundException {
 
     	DataInputStream dis = new DataInputStream(new FileInputStream(new File(cP)));
-    	
     	String ligne;
     	
     	try {
 			while ((ligne = dis.readLine()) !=null){	
-				
 				listPersonnage.add(new Personnage(ligne));	
-				
 			}
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
     	try {
 			dis.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 
-    
+    /*
+     * retourne le nom du personnage
+     */
     public String getNom() {return nom;}
     
 /*
@@ -98,7 +88,7 @@ public class Personnage {
  * 
  * Si les points de vie du personnage tombent à 0 alors il meurt (liaison avec la classe "mortPersonnageException").     
  */
-    public void prendreDegats( int degatsDanger) throws mortPersonnageException {
+    public void prendreDegats( int degatsDanger) throws MortPersonnageException {
     	int nombreAleatoire = (int)(Math.random() * ((niveauDeDefense) + 1));
     	int degatsRecus = degatsDanger - nombreAleatoire;
     	if (degatsRecus > 0) 
@@ -106,7 +96,7 @@ public class Personnage {
     	
     	System.out.println("\n--> "+this.nom+" s'est fait attaquer !\n");
     	if (pointsDeVie <= 0)
-    		throw new mortPersonnageException();
+    		throw new MortPersonnageException();
     	
     	int pdvPourCent = (pointsDeVie*100) / pointsDeVieMax;
     	
@@ -163,7 +153,7 @@ public class Personnage {
 /*
  * Supprime un objet de l'inventaire du personnage.
  */
-    public void delObjet(Objet test) {
+    public void suprObjet(Objet test) {
     	inventaire.supprimerObjet(test);
     }
 
@@ -175,15 +165,41 @@ public class Personnage {
     	inventaire.afficherObjet();
     }
     
+    /**
+     * 
+     * @return nombre d'item dans l'inventaire
+     */
     public int getNbItemInventaire()
     {
     	return inventaire.getNbObjet();
     }
     
+    /**
+     *  Utilise un objet défini par id
+     * @param id de l'objet
+     * @param c carte du niveau
+     * @param lo liste d'objet du niveau
+     */
 	public void utiliserObjInventaire(int id, Carte c, List<Objet> lo)
 	{
 		inventaire.utiliserObj(id, this, c, lo);
 	}
-
+	
+	/**
+	 * Permet d'ajouter des pv (utilisation de potion)
+	 */
+	public void ajoutPv(int pv)
+	{
+		String plusMoins="";
+		if(pv>0)
+			plusMoins="+"+pv+").";
+		else
+			plusMoins=""+pv+").";
+		
+		this.pointsDeVie+=pv;
+		if(this.pointsDeVie>this.pointsDeVieMax)
+			this.pointsDeVie=this.pointsDeVieMax;
+		Main.println(" -- Vous avez "+this.pointsDeVie+" ("+plusMoins);
+	}
    
 }

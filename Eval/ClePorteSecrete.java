@@ -7,22 +7,22 @@ import java.util.List;
 
 public class ClePorteSecrete extends Objet {
 
-    protected String newRoomName;
-    protected String accessType;
+    protected String nouveauNomPiece;
+    protected String typeAccess;
     int cleId;
     
     //Constructeur pour definir un objet qui ouvre un passage secret
     public ClePorteSecrete(String itemRoom, String name, String accessType,int id) {
-    	this.itemRoom = itemRoom;
+    	this.itemPiece = itemRoom;
     	this.name = name;
-    	this.accessType = accessType;
+    	this.typeAccess = accessType;
     	this.cleId=id;
     }
     
     
     //voir dans Objet
     public String getAction(){
-    	return ("\n--> L'objet "+name+", ouvre la porte "+accessType+".\n"+description+".");
+    	return ("\n--> L'objet "+name+", ouvre la porte "+typeAccess+" vers "+typeAccess +".");
     }
 
     

@@ -56,7 +56,7 @@ public class Inventaire {
 	
 	public void utiliserObj(int id, Personnage p, Carte c, List<Objet> lo)
 	{
-		this.objets.get(id).utliserObjet(p, c, lo);
+		((Utilisable)this.objets.get(id)).utiliserEffet(p);
 		this.objets.remove(id);
 	}
 	

@@ -14,7 +14,7 @@ public class Piece {
 		
 		l.setVisite(true);
 		this.l=l;
-		o=Objet.getItemsInpiece(l, allObj);
+		o=Objet.getItemsDansPiece(l, allObj);
 		
 		if(danger.size()>0)
 			if((int)(Math.random()*2)==0)
@@ -39,7 +39,7 @@ public class Piece {
 	
 	public void affDatapiece()
 	{
-		Main.println("\n--> Vous êtes dans la salle "+l.getName()+".");
+		Main.println("\n--> Vous êtes dans la salle "+l.getNom()+".");
 		if(d!=null)
 			System.out.print("\n--> Dans cette salle, il y a 1 danger, ainsi que ");
 		else
@@ -66,25 +66,25 @@ public class Piece {
 	{
 		System.out.println(d.toString());
 	}
-	private void describepiece()
+	private void decrirePiece()
 	{
 		l.seDecrire();
 	}
-	private int getNbPort()
+	private int getNbPorte()
 	{
-		return l.getNbPort();
+		return l.getNbPorte();
 	}
 	
-	private String getPortDestById(int id)
+	private String getPorteDestById(int id)
 	{
-		return this.l.getPortDestById(id);
+		return this.l.getPorteDestById(id);
 	}
 	
-	private boolean affAllIteminpiece()
+	private boolean affToutItemDansPiece()
 	{
 		if(o.size()>0)
 		{
-			Main.println("--> Liste des objets dans "+l.getName()+" :\n");
+			Main.println("--> Liste des objets dans "+l.getNom()+" :\n");
 			int j=1;
 			Main.println(" >> 0: ne rien faire.");
 			for(Objet ob: o)
@@ -113,19 +113,9 @@ public class Piece {
 		return this.o.get(id);
 	}
 	
-	private boolean portBloque(int idPorte)
+	private boolean porteBloque(int idPorte)
 	{
 		return this.l.porteBloque(idPorte);
-	}
-	
-	private void affAllObj()
-	{
-		int j=0;
-		for(Objet ob: this.o)
-		{
-			System.out.println("--- "+j+" --- "+ob.getName());
-			j++;
-		}
 	}
 	
 	private void suprObj(Objet ob)
@@ -142,7 +132,7 @@ public class Piece {
 	
 	public void choixInspecter(Scanner sc,Niveau n,Personnage p)
 	{
-		if(this.affAllIteminpiece())
+		if(this.affToutItemDansPiece())
 		{
 			Main.print("\n--> Quel objet souhaitez vous prendre ?\n> ");
 			int choix=sc.nextInt();
@@ -154,7 +144,7 @@ public class Piece {
 				{
 					Objet oTemp=this.getObj(choix-1);
 					this.suprObj(oTemp);
-					String s=oTemp.utliserObjet(p,n.getCarte(),n.getAllObjet());
+					String s=oTemp.utliserObjet(p,n.getCarte(),n.getToutObjet());
 					if(s!=null)
 						Main.println("\n--> Description : \n"+s);
 				}
@@ -169,16 +159,16 @@ public class Piece {
 	public Piece choixChangerPiece(Scanner sc, Niveau n)
 	{
 		Piece ret=null;
-		this.describepiece();
+		this.decrirePiece();
 		int choix=sc.nextInt();
-		if(choix>0 && choix-1<this.getNbPort())
+		if(choix>0 && choix-1<this.getNbPorte())
 		{
-			 if(!this.portBloque(choix-1))
+			 if(!this.porteBloque(choix-1))
 			 {
-				 System.out.println("change vers: "+this.getPortDestById(choix-1));
-				 Lieu lieu=n.getLieuByName(this.getPortDestById(choix-1));
+				 System.out.println("change vers: "+this.getPorteDestById(choix-1));
+				 Lieu lieu=n.getLieuParNom(this.getPorteDestById(choix-1));
  				if(lieu!=null)
- 					ret=new Piece(lieu,n.getAllObjet(),n.getDangers());
+ 					ret=new Piece(lieu,n.getToutObjet(),n.getDangers());
 					else
 						System.err.println("\n/!\\Erreur ! Impossible de changer de salle./!\\\n");   
 			 }
@@ -202,7 +192,7 @@ public class Piece {
 		choix=sc.nextInt();
 		if(choix>0&&choix-1<p.getNbItemInventaire())
 		{
-			p.utiliserObjInventaire(choix-1, n.getCarte(), n.getAllObjet());
+			p.utiliserObjInventaire(choix-1, n.getCarte(), n.getToutObjet());
 		}
 	}
 	
@@ -212,7 +202,7 @@ public class Piece {
 			p.attaquer(this.getDanger());
 		} catch (DangerMeurtException e1) {
 			System.out.println("\n--> Vous avez battu le danger "+d.getName()+" !\n"); 
-			n.removeDanger(this.suprDanger());
+			n.suprDanger(this.suprDanger());
 			if(n.getNbDanger()==0)
 			{
 				System.out.println("\n--> ");

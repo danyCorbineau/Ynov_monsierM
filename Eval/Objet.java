@@ -10,9 +10,9 @@ import java.io.*;
 public abstract class Objet {
 
     protected String name;
-    protected String itemRoom;
+    protected String itemPiece;
     protected String description;
-    protected int itemSize;
+    protected int itemTaille;
 
 
     //Convertit les données du fichier specifie en entree (.csv) en ArrayList
@@ -32,9 +32,9 @@ public abstract class Objet {
     	return listeResult;
     }
     
-    public String getNameRoom()
+    public String getNomPiece()
     {
-    	return this.itemRoom;
+    	return this.itemPiece;
     }
     
     
@@ -48,7 +48,7 @@ public abstract class Objet {
     	if(t[2].compareTo("I") == 0){
     		return new Information(t[0],t[1],t[3]);
     	}else if(t[2].compareTo("O") == 0){
-    		return new Utilisable(t[0],t[1],t[3],1);
+    		return new Utilisable(t[0],t[1],t[4],1,t[3]);
     	}else if(t[2].compareTo("C") == 0){
     		nbCleActuel++;
     		return new ClePorteSecrete(t[0],t[1],t[3],nbCleActuel);
@@ -64,18 +64,17 @@ public abstract class Objet {
     
     
     //Transmet les objets presents dans une salle précise donnee en parametre
-    public static List<Objet> getItemsInRoom(Lieu room,List<Objet> l) {
+    public static List<Objet> getItemsDansPiece(Lieu piece,List<Objet> l) {
     	List<Objet> lo=new ArrayList<>();
-    	int c=0;
     	for(Objet o: l)
     	{
-    		if(o.getNameRoom().compareTo(room.getName())==0)
+    		if(o.getNomPiece().compareTo(piece.getNom())==0)
     			lo.add(o);
     	}
     	return lo;
     }
     
-    public String getName()
+    public String getNom()
     {
     	return this.name;
     }

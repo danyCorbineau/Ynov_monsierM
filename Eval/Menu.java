@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /*
@@ -29,10 +28,10 @@ public class Menu {
 	/**
 	 * Lancement du jeu
 	 */
-	public void start()
+	public void lancer()
 	{
 		Scanner sc=new Scanner(System.in);
-		boolean loop=true;
+		boolean boucle=true;
 		
 		System.out.println();
 		System.out.println("#--------------------------------------------------------------------------------------------------------------------------------#\n"+
@@ -46,11 +45,11 @@ public class Menu {
 						   "#--------------------------------------------------------------------------------------------------------------------------------#\n");
 		
 		
-		while(loop)
+		while(boucle)
 		{
-			if(!s.haveNiveau()){ Main.println("1 : Choisir un niveau"); }
-			if(!s.havePerso()){ Main.println("2 : Choisir un personnage"); }
-			if(s.isValide()){ Main.println("3 : Jouer"); }
+			if(!s.aUnNiveau()){ Main.println("1 : Choisir un niveau"); }
+			if(!s.aUnPerso()){ Main.println("2 : Choisir un personnage"); }
+			if(s.estValide()){ Main.println("3 : Jouer"); }
 			Main.print("4 : Quitter\n> ");
 			
 			try
@@ -61,7 +60,7 @@ public class Menu {
 					try {
 						
 						Main.print("\n--> Nom du fichier niveau :\n> ");
-						s.setLevel(sc.next()+".txt");
+						s.donnerLevel(sc.next()+".txt");
 					} catch (FileNotFoundException e) {
 						System.err.println("\n/!\\ Ce niveau n'existe pas /!\\\n");
 					}
@@ -85,7 +84,7 @@ public class Menu {
 						int i=sc.nextInt();
 						if(i<listePerso.size()&&i>=0)
 						{
-							s.setPersonnage(listePerso.get(i));
+							s.donnerPersonnage(listePerso.get(i));
 							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(i).getNom()+" !\n");
 						}
 						
@@ -94,18 +93,18 @@ public class Menu {
 					}
 					break;
 				case 3: 
-					if(s.isValide())
+					if(s.estValide())
 					{
-						s.startSenario(sc);
+						s.lancerSenario(sc);
 					}
-					else if(s.haveNiveau())
-						System.out.println("--> Il faut d'abord choisir un personnage avant de jouer !\n");
-					else if(s.havePerso())
-						System.out.println("--> Il faut d'abord choisir un niveau avant de jouer !\n");
+					else if(s.aUnNiveau())
+						Main.println("--> Il faut d'abord choisir un personnage avant de jouer !\n");
+					else if(s.aUnPerso())
+						Main.println("--> Il faut d'abord choisir un niveau avant de jouer !\n");
 					else
-						System.out.println("--> Il faut d'abord choisir un personnage, ainsi qu'un niveau avant de jouer !\n");
+						Main.println("--> Il faut d'abord choisir un personnage, ainsi qu'un niveau avant de jouer !\n");
 					break;
-				case 4: loop=false; break;
+				case 4: boucle=false; break;
 				}
 			}
 			catch(InputMismatchException e)

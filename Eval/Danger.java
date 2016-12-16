@@ -23,8 +23,8 @@ public class Danger {
 	 * charge un danger grâce à une ligne du csv
 	 * @param line ligne du csv
 	 */
-    public Danger(String line) {
-    	String[] temp=line.split(";");
+    public Danger(String ligne) {
+    	String[] temp=ligne.split(";");
     	
     	nom=temp[0];
     	pv=Integer.valueOf(temp[1]);
@@ -53,7 +53,6 @@ public class Danger {
     	{
     		throw new DangerMeurtException(this);
     	}
-    	
     	System.out.println("\n--> Il reste au monstre "+this.nom+" "+this.pv+"HP !");
     }
     
@@ -82,7 +81,7 @@ public class Danger {
      * @return la liste remplie
      * @throws FileNotFoundException si le fichier n'est pas trouvé
      */
-    public static List<Danger> loadDangers(String fName,List<Danger> dangers) throws FileNotFoundException
+    public static List<Danger> chargerDangers(String fName,List<Danger> dangers) throws FileNotFoundException
     {
     	DataInputStream dis = new DataInputStream(new FileInputStream(new File(fName)));
     	

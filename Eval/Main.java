@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		Menu m=new Menu();
 		
-		m.start();
+		m.lancer();
 		
 	}
 	
@@ -18,7 +18,7 @@ public class Main {
 	{
 		System.out.print(s);
 		try {
-			Thread.sleep(200);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
