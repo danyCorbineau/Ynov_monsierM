@@ -54,10 +54,8 @@ public class Niveau {
 		} catch (IOException e) {
 			
 		}
-    	Main.println("\n#--------------------#\n");
-    	Main.println("--> "+nom+"\n\n"+this.description);
-		Main.println("\n--> Ce niveau contient "+carte.getSize()+" Salles, "+objets.size()+" Objets et "+dangers.size()+" Dangers.\n");
-		Main.println("\n#--------------------#\n");
+    	System.out.println(nom+"\nDescription:	"+this.description+
+				"\n -- Ce Niveau contient "+carte.getSize()+" Salles, "+objets.size()+" Objets et "+dangers.size()+" Dangers.");
     	
     	
     	try {

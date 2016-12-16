@@ -50,7 +50,7 @@ public class Carte {
 			try {
 				dis.close();
 			} catch (IOException e) {
-				System.out.println("Problème à la fermeture de la carte !");
+				System.err.println("\n/!\\Erreur à la fermeture de la carte /!\\\n");
 				e.printStackTrace();
 			}
 

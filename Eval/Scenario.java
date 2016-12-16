@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import p.Main;
+
 /*
  * Dany CORBINEAU ; dany.corbineau@ynov.com
  * Classe Scenario: permet de lier un niveau avec un personnage et permet le déroulement du jeu
@@ -28,7 +30,7 @@ public class Scenario {
      * Donne une valeur au personnage du scénario
      * @param p personnage qui sera utiliser dans le scénario
      */
-    public void setPersonnage(Personnage p)
+    public void donnerPersonnage(Personnage p)
     {
     	this.personnage=p;
     }
@@ -38,7 +40,7 @@ public class Scenario {
      * @param levelName nom du fichier niveau à charger moins .txt
      * @throws FileNotFoundException exception généré si un fichier est manquant
      */
-    public void setLevel(String levelName) throws FileNotFoundException
+    public void donnerLevel(String levelName) throws FileNotFoundException
     {
     	niveau=new Niveau();
     	niveau.charger(levelName);
@@ -48,7 +50,7 @@ public class Scenario {
      * Vérifie si ont peut lancer un senario
      * @return true si un personnage et un niveau ont été chargé 
      */
-    public boolean isValide()
+    public boolean estValide()
     {
     	return niveau!=null && personnage!= null;
     }
@@ -57,7 +59,7 @@ public class Scenario {
      * Vérifie si un niveau à été chargé
      * @return true si un niveau est chargé
      */
-    public boolean haveNiveau()
+    public boolean aUnNiveau()
     {
     	return niveau!=null;
     }
@@ -66,7 +68,7 @@ public class Scenario {
      * Vérifie si un personnage à été chargé
      * @return true si un personnage est chargé
      */
-    public boolean havePerso()
+    public boolean aUnPerso()
     {
     	return personnage!=null;
     }
@@ -74,28 +76,31 @@ public class Scenario {
     /**
      * Lance le senario
      */
-    public void startSenario(Scanner sc)
+    public void lancerSenario(Scanner sc)
     {
-    	if(this.isValide())
+    	if(this.estValide())
     	{
     		int choix;
-    		boolean loop=true;
+    		boolean boucle=true;
     		
-    		System.out.println("Vous avez choisi "+niveau.getName());// name
+    		Main.println("Vous avez choisi le niveau "+niveau.getName()+" !");// name
     		piece=new Piece(niveau.getFirstLieu(),niveau.getAllObjet(),niveau.getDangers());
     		
     		
     		
-    		while( (!niveau.allVisited() || niveau.getNbDanger()>0) && loop)
+    		while( (!niveau.allVisited() || niveau.getNbDanger()>0) && boucle)
     		{
     			piece.affDatapiece();
     			
     			try {
     				if(piece.existeDanger())
     					personnage.prendreDegats(piece.dangerAttaquer());
-				} catch (mortPersonnageException e) {
-					System.out.println(" ---!!! Vous avez perdu !!!--- ");
-					loop=false;
+				} catch (MortPersonnageException e) {
+					System.out.println("\n#-------------------#\n"+
+							   		   "|     GAME OVER     |\n"+
+							   		   "| Vous avez perdu ! |\n"+
+									   "#-------------------#\n");
+					boucle=false;
 					continue;
 				}
     			piece.afficherChoixUtilisateur();
@@ -133,11 +138,12 @@ public class Scenario {
         		catch(InputMismatchException e)
         		{
         			sc.nextLine();
-        			System.out.println("---!!!! Données invalides !!!!---");
+        			System.err.println("\n/!\\ Données invalides /!\\\n");
         		}
     		}
-    		System.out.println("La prtie est fini");
-    		
+    		Main.println("\n#--------------------#\n");
+    		System.out.println("--> Partie Terminée ! Bien joué à vous !");
+    		System.out.println("\n#--------------------#\n");
     	}
     }
     
