@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * Jérémy NUNES
- * Cette classe gère les objets possédés par le personnage.
+ * JÃ©rÃ©my NUNES
+ * Cette classe gÃ¨re les objets possÃ©dÃ©s par le personnage.
  */
 
 public class Inventaire {
 
-// Crée une liste d'objets	
+// CrÃ©e une liste d'objets	
     private List<Objet> objets;
     
     
@@ -19,25 +19,21 @@ public class Inventaire {
     }
     
     
-/*
- * Ajoute un objet à l'inventaire du personnage.
- */
+// Ajoute un objet Ã  l'inventaire du personnage.
 	public boolean ajouterObjet(Objet objet) {
 		return objets.add(objet);
 	}
 	
 
-/*
- * Supprime un objet de l'inventaire du personnage.
- */
+// Supprime un objet de l'inventaire du personnage.
 	public boolean supprimerObjet(Objet objet) {
 		return objets.remove(objet);
 	}
 	
 
 /*
- * Affiche la description d'un objet possédé par le personnage à partir du fichier "Objets.csv".
- * Méthode "describe" comprise dans la classe "Objet".
+ * Affiche la description d'un objet possÃ©dÃ© par le personnage Ã  partir du fichier "Objets.csv".
+ * MÃ©thode "describe" comprise dans la classe "Objet".
  */
 	public void afficherObjet() {
 		int j=1;
@@ -46,14 +42,17 @@ public class Inventaire {
 			Main.println(" >> "+j+": "+anItem.getAction()); 
 			j++;
 		}
-		
 	}
 	
+	
+// Retourne la taille des objets pour composer la capacitÃ© de transport maximum du personnage.	
 	public int getNbObjet()
 	{
 		return this.objets.size();
 	}
 	
+	
+// Permet d'utiliser les objets prÃ©sents dans l'inventaire du personnage.	
 	public void utiliserObj(int id, Personnage p, Carte c, List<Objet> lo)
 	{
 		((Utilisable)this.objets.get(id)).utiliserEffet(p);
