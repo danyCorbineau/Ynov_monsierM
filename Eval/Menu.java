@@ -86,7 +86,7 @@ public class Menu {
 						if(i<listePerso.size()&&i>=0)
 						{
 							s.setPersonnage(listePerso.get(i));
-							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(0)+" !\n");
+							Main.println("\n--> Vous avez choisi d'incarner "+listePerso.get(i).getNom()+" !\n");
 						}
 						
 					} catch (FileNotFoundException e) {
