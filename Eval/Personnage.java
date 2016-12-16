@@ -184,6 +184,15 @@ public class Personnage {
 	{
 		inventaire.utiliserObj(id, this, c, lo);
 	}
-
+	
+	/**
+	 * Permet d'ajouter des pv
+	 */
+	public void ajoutPv(int pv)
+	{
+		this.pointsDeVie+=pv;
+		if(this.pointsDeVie>this.pointsDeVieMax)
+			this.pointsDeVie=this.pointsDeVieMax;
+	}
    
 }
