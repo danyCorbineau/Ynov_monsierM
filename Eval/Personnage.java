@@ -16,19 +16,12 @@ public class Personnage {
 	
 
     private String nom;
-
     private String profession;
-
     private int pointsDeVie;
-    
     private int pointsDeVieMax;
-
     private int niveauDeDefense;
-
     private int niveauAttaque;
-
     private int capaciteDeTransport;
-    
     private Inventaire inventaire;
     
     
@@ -56,43 +49,27 @@ public class Personnage {
     public static void chargementP(String cP, List listPersonnage) throws FileNotFoundException {
 
     	DataInputStream dis = new DataInputStream(new FileInputStream(new File(cP)));
-    	
     	String ligne;
     	
     	try {
 			while ((ligne = dis.readLine()) !=null){	
-				
 				listPersonnage.add(new Personnage(ligne));	
-				
 			}
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
     	try {
 			dis.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 
-    
-/*
- * Charge un personnage une fois la partie lancé avec un niveau prédéfini.
- */
-    public void niveauPersonnage() {
-    }
-    
-
-    
-/*
- * Le personnage appele un objet.
- */
-    public void appelerObjet() {
-    }
-   
+    /*
+     * retourne le nom du personnage
+     */
+    public String getNom() {return nom;}
     
 /*
  * Retourne les points de vie possédés par le personnage.    
@@ -111,20 +88,20 @@ public class Personnage {
  * 
  * Si les points de vie du personnage tombent à 0 alors il meurt (liaison avec la classe "mortPersonnageException").     
  */
-    public void prendreDegats( int degatsDanger) throws mortPersonnageException {
+    public void prendreDegats( int degatsDanger) throws MortPersonnageException {
     	int nombreAleatoire = (int)(Math.random() * ((niveauDeDefense) + 1));
     	int degatsRecus = degatsDanger - nombreAleatoire;
     	if (degatsRecus > 0) 
     		pointsDeVie = pointsDeVie - (degatsRecus);   		
     	
-    	System.out.println(this.nom+" s'est fait attaquer.");
+    	System.out.println("\n--> "+this.nom+" s'est fait attaquer !\n");
     	if (pointsDeVie <= 0)
-    		throw new mortPersonnageException();
+    		throw new MortPersonnageException();
     	
     	int pdvPourCent = (pointsDeVie*100) / pointsDeVieMax;
     	
     	
-    	System.out.println("Il reste à "+nom+" : "+pointsDeVie+" HP. ("+pdvPourCent+")");
+    	Main.println("\n--> Il reste à "+nom+" "+pointsDeVie+"HP ("+pdvPourCent+"%).");
     }
 
     
@@ -154,34 +131,13 @@ public class Personnage {
     }
 
 
-/*
- * Le joueur se déplace sur la carte.    
- */
-    public void seDeplacer() {
-    }
-
-    
-/*
- * Le personnage inspecte un objet.
- */
-    public void inspecterObjet() {
-    }
-
-    
-
-/* 
- * Lorsqu'un personnage change de pièce..
- * 
- * 
- */
-
     
 /*
  * Permet d'écrire les caractéristiques des différents personnages dans la console lors du choix de personnage dans le menu. 
  */
     public void  description() {
-    	System.out.println("Mon pseudo est "+nom+", je suis un "+profession+". Je possède un nombre de HP égal à "+pointsDeVie+
-    			", une défense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
+    	Main.println("Mon pseudo est "+nom+", je suis un "+profession+". Je possède un total de "+pointsDeVie+
+    			"HP, une défense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
     			" et je peux porter jusqu'à "+capaciteDeTransport+" objets.");
     }
     
@@ -197,7 +153,7 @@ public class Personnage {
 /*
  * Supprime un objet de l'inventaire du personnage.
  */
-    public void delObjet(Objet test) {
+    public void suprObjet(Objet test) {
     	inventaire.supprimerObjet(test);
     }
 
@@ -209,11 +165,21 @@ public class Personnage {
     	inventaire.afficherObjet();
     }
     
+    /**
+     * 
+     * @return nombre d'item dans l'inventaire
+     */
     public int getNbItemInventaire()
     {
     	return inventaire.getNbObjet();
     }
     
+    /**
+     *  Utilise un objet défini par id
+     * @param id de l'objet
+     * @param c carte du niveau
+     * @param lo liste d'objet du niveau
+     */
 	public void utiliserObjInventaire(int id, Carte c, List<Objet> lo)
 	{
 		inventaire.utiliserObj(id, this, c, lo);
