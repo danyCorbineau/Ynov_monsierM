@@ -104,14 +104,14 @@ public class Personnage {
     	if (degatsRecus > 0) 
     		pointsDeVie = pointsDeVie - (degatsRecus);   		
     	
-    	System.out.println(this.nom+" s'est fait attaquer.");
+    	System.out.println("\n--> "+this.nom+" s'est fait attaquer !\n");
     	if (pointsDeVie <= 0)
     		throw new mortPersonnageException();
     	
     	int pdvPourCent = (pointsDeVie*100) / pointsDeVieMax;
     	
     	
-    	System.out.println("Il reste à "+nom+" : "+pointsDeVie+" HP. ("+pdvPourCent+")");
+    	Main.println("\n--> Il reste à "+nom+" "+pointsDeVie+"HP ("+pdvPourCent+"%).");
     }
 
     
@@ -146,8 +146,8 @@ public class Personnage {
  * Permet d'écrire les caractéristiques des différents personnages dans la console lors du choix de personnage dans le menu. 
  */
     public void  description() {
-    	System.out.println("Mon pseudo est "+nom+", je suis un "+profession+". Je possède un nombre de HP égal à "+pointsDeVie+
-    			", une défense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
+    	Main.println("Mon pseudo est "+nom+", je suis un "+profession+". Je possède un total de "+pointsDeVie+
+    			"HP, une défense de "+niveauDeDefense+", une attaque de "+niveauAttaque+
     			" et je peux porter jusqu'à "+capaciteDeTransport+" objets.");
     }
     
